@@ -1,0 +1,13 @@
+[
+  {
+    "id": "tc-electronic-m3000-editor",
+    "module": {
+      "path": "../editors/tc-m3000/module",
+      "export": "m3000Module"
+    },
+    "view": {
+      "path": "../editors/tc-m3000/registration",
+      "export": "m3000View"
+    }
+  }
+]

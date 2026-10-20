@@ -1,0 +1,3144 @@
+{
+ "schema": "tc-m2000-parameters/1",
+ "model": "TC Electronic M2000 Studio Effects Processor (MkII, SW 2.06)",
+ "sources": [
+  {
+   "id": "M2K-EN",
+   "file": "docs/instruments/sources/tc-m2000-m3000/tc_electronic_m2000_manual_english.pdf",
+   "sha256": "eefae2d58c29ef324687b3abc413c8308f088b8e9a40b4cf25486cff69ffbce0",
+   "printedPageOffset": 0,
+   "edition": "M2000 Studio Effects Processor User's Manual, English, Rev 4 - SW - V 2.06 (printed p.3); PDF created 2000-08-30",
+   "role": "primary M2000 authority (menus, program pages, MIDI chart p.33)"
+  },
+  {
+   "id": "M2K-FR",
+   "file": "docs/instruments/sources/tc-m2000-m3000/tc_electronic_m2000_manual_french.pdf",
+   "sha256": "ce99c81b489a17b533f7745c14ab40bf6ef2f6a57b33dc70f96693c42623147c",
+   "printedPageOffset": 0,
+   "edition": "Mode d'emploi M2000, version française Rev 4 - SW - V 2.06, Prod. No 606050211 (printed p.3); PDF created 2000-10-02",
+   "role": "French labels; second reading for conflicts"
+  },
+  {
+   "id": "M2K-CC",
+   "file": "docs/instruments/sources/tc-m2000-m3000/tc_electronic_m2000_midi_cc_specifications.pdf",
+   "sha256": "2513152b7e02e405838575e6b0de670993cbdefd0c559047632a92c7a9df060f",
+   "printedPageOffset": 0,
+   "edition": "M2000 MIDI CC GUIDE, 1 page ('Page 1 of 1'); PDF title 'Microsoft Word - M2k_M3k CC.DOC', created 2002-08-29",
+   "role": "M2000 CC authority"
+  },
+  {
+   "id": "M3K-EN",
+   "file": "docs/instruments/sources/tc-m2000-m3000/tc_electronic_m3000_manual_english.pdf",
+   "sha256": "49e8465d4ca5203059b1b3ec106515eb2408a67ff909812657285d09e0554d03",
+   "printedPageOffset": 2,
+   "edition": "M3000 Studio Reverb Processor Users Manual, English, Rev 3 - SW - V 2.04",
+   "role": "M3000 side of the mapping (descriptions); M3000 display scales come from DISPLAY-MAP"
+  },
+  {
+   "id": "M3K-SYX",
+   "file": "docs/instruments/sources/tc-m2000-m3000/tc_electronic_m3000_midi_sysex_specifications.pdf",
+   "sha256": "2122a1b1a8cb8c6c4958a3fefc2ea94f209f9954eebb09d4d2e14603adc3bf22",
+   "printedPageOffset": 0,
+   "edition": "TC Electronic M3000 MIDI specification V1.01 (SW 2.03)",
+   "role": "M3000 algorithm type ids and parameter ids, used through SYSEX-PARAMETERS"
+  },
+  {
+   "id": "TC-REVCMP",
+   "file": "docs/instruments/sources/tc-m2000-m3000/Rev_Comparison_02b.pdf",
+   "sha256": "e5837da3962d40deea3ed382828433d85c269c4c149ee51b7087a76cf52e8923",
+   "printedPageOffset": null,
+   "edition": "TC Reverb Comparison sheet, 2 unnumbered pages ('Side 1', 'Side 2'), PDF 2004-11-29; cited by PDF page",
+   "role": "manufacturer marketing; algorithm family names only, never protocol authority"
+  },
+  {
+   "id": "KB-M2K-M3K-PRESETS",
+   "file": "docs/instruments/sources/tc-m2000-m3000/web/kb-20936061-M2000-Can-presets-be-transferred-to-M3000.html",
+   "sha256": "7097cda97a2a7450aabc82eb0ee64c76bd344f6f751a71ae7e0438da8df3633f",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: Can presets be transferred to M3000', Staff, 2016-09-28 (archived capture)",
+   "role": "manufacturer statement on preset compatibility"
+  },
+  {
+   "id": "KB-M2K-BANK",
+   "file": "docs/instruments/sources/tc-m2000-m3000/web/kb-93472658-M2000-Bank-select-via-MIDI.html",
+   "sha256": "563a616ad13ae2df91be2f13f7fe05ecc8e75f31953cc35007633cbd63d97838",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: Bank select via MIDI', 2015-05-08 (archived capture)",
+   "role": "context"
+  },
+  {
+   "id": "KB-M2K-CLOCK",
+   "file": "docs/instruments/sources/tc-m2000-m3000/web/kb-20929221-M2000-MIDI-tempo-sync.html",
+   "sha256": "62866e916e231af3e2bdfa2a9e2fd6770659dbc7850a89367cda2d5ecd88af85",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: MIDI tempo sync doesn't work', 2012-02-03 (archived capture)",
+   "role": "context"
+  },
+  {
+   "id": "KB-M2K-LATEST",
+   "file": "docs/instruments/sources/tc-m2000-m3000/web/kb-21683368-M2000-Latest-software-version.html",
+   "sha256": "c9dcdc1d4cfceb99a1c29f73142dc2112d1b3e149679659838ad46ff6ba1e942",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: Latest software version', 2012-07-04 (archived capture)",
+   "role": "context"
+  },
+  {
+   "id": "KB-M2K-UPDATE",
+   "file": "docs/instruments/sources/tc-m2000-m3000/web/kb-20942932-M2000-How-to-update-the-software.html",
+   "sha256": "e120ad14c77dcb6e136d7eb9ef385e360b4ac1f5504da0a9d60084723a329a36",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: How to update the software', 2012-02-03 (archived capture)",
+   "role": "context"
+  },
+  {
+   "id": "KB-M2K-VSS3",
+   "file": "docs/instruments/sources/tc-reverb-family/web/kb-26622177-M2000-Does-it-have-the-VSS3-algorithm.html",
+   "sha256": "3cbc415d5e0562e71e47c4c0d12f6eb8ee06040baa499307b9a72d60fe6ce212",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M2000: Does it have the VSS3 algorithm?', 2016-09-28 (archived capture 2017-01-15; ledger tc-reverb-family/sources.json)",
+   "role": "manufacturer statement: no VSS3 in the M2000; M2000 reverbs from the M5000"
+  },
+  {
+   "id": "KB-M5K-M2K",
+   "file": "docs/instruments/sources/tc-reverb-family/web/kb-20963678-M5000-Having-all-the-effects-of-the-M2000.html",
+   "sha256": "f7e48ffd68c2b14e84ec2276a0bdbc8a39af3d1874df29ad9d0abe783bcf4ec9",
+   "printedPageOffset": null,
+   "edition": "TC support note 'M5000: Having all the effects of the M2000', 2016-09-28 (archived capture 2016-10-30; ledger tc-reverb-family/sources.json)",
+   "role": "manufacturer statement: the M5000 has all M2000 effects"
+  },
+  {
+   "id": "FAMILY-COMPATIBILITY",
+   "file": "docs/instruments/tc-m3000/FAMILY-COMPATIBILITY.md",
+   "sha256": "d4002cd1b97d2ff916efb905c14de2925197f0d08be2e2251b8dcbc884b42751",
+   "printedPageOffset": null,
+   "edition": "TC reverb family compatibility study (local, untracked; read §1-3 and §7, not modified)",
+   "role": "lineage synthesis (secondary; its primary sources are cited directly here)"
+  },
+  {
+   "id": "SYSEX-PARAMETERS",
+   "file": "docs/instruments/tc-m3000/SYSEX-PARAMETERS.json",
+   "sha256": "1a422b5d56591225e4dbdca6d5b2943e3c25148374a153b1c75c870c0e8ff22c",
+   "printedPageOffset": null,
+   "edition": "M3000 SysEx table transcription (local, untracked)",
+   "role": "M3000 ids for the mapping"
+  },
+  {
+   "id": "DISPLAY-MAP",
+   "file": "docs/instruments/tc-m3000/DISPLAY-MAP.json",
+   "sha256": "580898cfd03d8a095546e30a8106e7708aac856245e6e433595827cb9861bd3e",
+   "printedPageOffset": null,
+   "edition": "M3000 display map (local, untracked)",
+   "role": "M3000 display scales for the mapping"
+  }
+ ],
+ "cc": {
+  "engineMix": 10,
+  "engineOutLevel": 11,
+  "firstEditParameter": 12,
+  "scaling": "MIDI CC values are scaled to parameter values.",
+  "defaultChannels": {
+   "engine1": 1,
+   "engine2": 2,
+   "combined": 3
+  },
+  "engineChannel": "Engine parameters are sent/received on the MIDI channel of Engine 1 or Engine 2 respectively.",
+  "systemChannel": "System parameters are sent/received on the Combined (COMB) channel.",
+  "mixAvailability": "Mix (CC 10) only 'If available (i.e. not in compressor presets)'.",
+  "expertMode": "Please note that the parameter/CC range is different if a preset is set into Expert mode",
+  "chartScaling": "All Controllers are single byte type, scaled to parameter range.",
+  "transmitted": "from 10 and up",
+  "recognized": "from 10 and up",
+  "rounding": "not documented",
+  "cite": [
+   "M2K-CC p.1: 'MIX *(see note)', 'OUTLEVEL', '1st PARAMETER on EDIT PAGE', '2nd PARAMETER on EDIT PAGE'",
+   "M2K-CC p.1: 'MIDI CC sent/received on MIDI Channel for respectively Engine1 and Eng2'",
+   "M2K-CC p.1: 'MIDI CC sent/received on MIDI channel for COMB'",
+   "M2K-CC p.1: 'Please note that the parameter/CC range is different if a preset is set into Expert mode'",
+   "M2K-CC p.1: 'Note: - If available (i.e. not in compressor presets)'",
+   "M2K-CC p.1: 'MIDI CC values are scaled to parameter values.'",
+   "M2K-EN p.33: 'Cntl.#10: Mix (If available)', 'Cntl.#11: Output Level', 'Cntl.#12: First Param. on Edit page.', 'Cntl.#13: Second Param. on Edit page.'",
+   "M2K-EN p.33: 'All Controllers are single byte type,', 'scaled to parameter range.'",
+   "M2K-EN p.33: 'Eng1: 1, Eng2: 2, Com: 3'"
+  ]
+ },
+ "routingsOrderEvidence": "Ordered list: the ROUTING LCD (image, M2K-EN p.16 and M2K-FR p.16) numbers the six routings 1-6; the text describes them in the same order in two columns (left: Serial, Parallel, Dual input; right: Dual Mono, Stereo, Preset Glide) and the table of contents (p.3) lists 'Serial, Parallel, Dual input, Dual mono, Stereo, Preset glide'. index = LCD number - 1; the CC 35 value-to-index relation is not printed ('MIDI CC values are scaled to parameter values').",
+ "routings": [
+  {
+   "index": 0,
+   "lcdNumber": 1,
+   "lcd": "SERIAL",
+   "label_en": "Serial",
+   "label_fr": "Série",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '1 SERIAL'",
+    "M2K-EN p.16: 'Serial', 'The Serial mode is a Stereo In/Out'",
+    "M2K-FR p.16: 'Série'"
+   ]
+  },
+  {
+   "index": 1,
+   "lcdNumber": 2,
+   "lcd": "PARALLEL",
+   "label_en": "Parallel",
+   "label_fr": "Parallèle",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '2 PARALLEL'",
+    "M2K-EN p.16: 'Parallel', 'The Parallel mode is a stereo In/Out'",
+    "M2K-FR p.16: 'Parallèle'"
+   ]
+  },
+  {
+   "index": 2,
+   "lcdNumber": 3,
+   "lcd": "DUALINPUT",
+   "label_en": "Dual input (Split mode)",
+   "label_fr": "Mode double entrée (Mode Split)",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '3 DUALINPUT'",
+    "M2K-EN p.16: 'Dual input (Split mode)', 'The Dual input mode is a Dual mono In /'",
+    "M2K-FR p.16: 'Mode double entrée (Mode Split)'"
+   ]
+  },
+  {
+   "index": 3,
+   "lcdNumber": 4,
+   "lcd": "DUALMONO",
+   "label_en": "Dual Mono",
+   "label_fr": "Mode double mono (Dual Mono)",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '4 DUALMONO'",
+    "M2K-EN p.16: 'Dual Mono', 'This mode is for Dual Mono In/Out'",
+    "M2K-FR p.16: 'Mode double mono'"
+   ]
+  },
+  {
+   "index": 4,
+   "lcdNumber": 5,
+   "lcd": "STEREO",
+   "label_en": "Stereo",
+   "label_fr": "Stéréo",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '5 STEREO'",
+    "M2K-EN p.16: 'Stereo', 'Engine 1 will be copied into Engine 2'",
+    "M2K-FR p.16: 'Stéréo'"
+   ]
+  },
+  {
+   "index": 5,
+   "lcdNumber": 6,
+   "lcd": "PRE-GLIDE",
+   "label_en": "Preset Glide",
+   "label_fr": "Mode de transition de programme (Preset Glide)",
+   "cite": [
+    "M2K-EN p.16 LCD (image): '6 PRE-GLIDE'",
+    "M2K-EN p.16: 'Preset Glide', 'only one Engine is available while the M2000 is'",
+    "M2K-FR p.16: 'Mode de transition de programme'"
+   ]
+  }
+ ],
+ "algorithms": [
+  {
+   "key": "reverb",
+   "name_en": "Reverb",
+   "name_fr": "Réverbération",
+   "category": "reverb",
+   "manualPages": [
+    "M2K-EN p.24",
+    "M2K-FR p.24",
+    "M2K-EN p.22",
+    "M2K-EN p.10"
+   ],
+   "expertModeDiffers": true,
+   "expertModeEvidence": [
+    "M2K-CC p.1: 'Please note that the parameter/CC range is different if a preset is set into Expert mode'",
+    "M2K-EN p.24: 'All Reverb presets both have a User and an expert page.'"
+   ],
+   "variants": [
+    "HALL",
+    "ROOM",
+    "PLATE",
+    "AMBIENCE",
+    "GATED"
+   ],
+   "variantsCite": [
+    "M2K-EN p.24: 'Reverb Programs', 'HALL-ROOM-PLATE-AMBIENCE-GATED'",
+    "M2K-EN p.10 LCD (image): algorithm type 'PLATES' (Recall) and 'PLATE' (Combined Recall)",
+    "M2K-EN p.22 LCD (image): 'EDIT 1 - ROOM' under the callout 'Algorithm been edited'"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.24: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.24: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.24: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "decay",
+     "label_en": "Decay",
+     "label_fr": "Decay",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm.",
+     "cite": [
+      "M2K-EN p.24: 'Decay', 'Sets the decay time. The value indicates the time to where'",
+      "M2K-FR p.24: 'Temps de déclin de la réverbération'",
+      "M2K-EN p.10 LCD (image): Recall display 'TYPE PLATES' with primary parameter 'DECAY 2.85s'",
+      "M2K-EN p.20: 'Decay parameter'"
+     ],
+     "note": "No range or resolution printed; seconds with two decimals appear only in the Recall LCD example. Tap-key target for Reverb (p.20).",
+     "unitHint": "s",
+     "lcdExample": "2.85s"
+    },
+    {
+     "key": "pre-delay",
+     "label_en": "Pre-delay",
+     "label_fr": "Pre-delay",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm.",
+     "cite": [
+      "M2K-EN p.24: 'Pre-delay', 'The time to arrival of the first reflection.'",
+      "M2K-FR p.24: 'Temps d’arrivée des premières réflexions.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "reverb-lo",
+     "label_en": "Reverb Lo",
+     "label_fr": "Reverb Lo",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm.",
+     "cite": [
+      "M2K-EN p.24: 'Reverb Lo', 'Adjust the low frequency reverberation time.'",
+      "M2K-FR p.24: 'Détermine la durée de réverbération des graves.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "reverb-mid",
+     "label_en": "Reverb Mid",
+     "label_fr": "Reverb Mid",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm.",
+     "cite": [
+      "M2K-EN p.24: 'Reverb Mid', 'Adjust the mid frequency reverberation time.'",
+      "M2K-FR p.24: 'Durée de réverbération des fréquences médium.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "reverb-hi",
+     "label_en": "Reverb Hi",
+     "label_fr": "Reverb Hi",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm. On the p.22 LCD this is the line immediately above 'Expert mode'.",
+     "cite": [
+      "M2K-EN p.24: 'Reverb Hi', 'Adjust the high frequency reverberation time.'",
+      "M2K-FR p.24: 'Détermine la durée de réverbération des aigus.'",
+      "M2K-EN p.22 LCD (image): 'EDIT 1 - ROOM', line 'Reverb Hi : -2'"
+     ],
+     "note": "Only an LCD example value (-2, no unit) is printed: the display is signed. Range, unit and step not printed.",
+     "lcdExample": "-2"
+    },
+    {
+     "key": "expert-mode",
+     "label_en": "Expert mode",
+     "label_fr": "Expert mode",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "user",
+     "kind": "action",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm. On the p.22 LCD it is followed directly by the LEVELS subtitle (Mix, Out Level).",
+     "cite": [
+      "M2K-EN p.24: 'Expert mode', 'Press OK here to enter expert mode.'",
+      "M2K-EN p.22: 'When pressing OK on the Expert line', 'it is NOT possible to return to the User Edit mode'",
+      "M2K-EN p.22 LCD (image): line 'Expert mode: PRESS OK'",
+      "M2K-FR p.24: 'Sélectionnez cette ligne et appuyez sur OK pour accéder au'"
+     ],
+     "note": "Action line, not a value. Storing a preset edited in Expert mode keeps it in Expert mode forever (p.22). Whether this line occupies a CC number is not documented.",
+     "lcdExample": "PRESS OK"
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut freq.",
+     "label_fr": "HiCut freq.",
+     "editIndex": null,
+     "descriptionIndex": 6,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "conflict",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm. Absent between 'Expert mode' and the LEVELS subtitle on the p.22 LCD: its Edit-page position is unknown.",
+     "cite": [
+      "M2K-EN p.24: 'HiCut freq.', 'Sets the cutoff frequency of the HighCut filter.'",
+      "M2K-FR p.24: 'Détermine la fréquence de coupure du filtre passe-haut.'",
+      "M2K-EN p.24 diagram (image): block 'HICUT' ahead of 'INITIAL REFLECT.' and 'REVERB'"
+     ],
+     "note": "EN (high-cut) and FR (passe-haut = high-pass) disagree on the filter type; the label 'HiCut', the diagram and FR 'HiCut level ... filtre coupe-haut' support reading A. Range not printed.",
+     "readings": [
+      {
+       "id": "A",
+       "source": "M2K-EN p.24",
+       "reading": "cut-off frequency of the HighCut (high-cut, low-pass) filter"
+      },
+      {
+       "id": "B",
+       "source": "M2K-FR p.24",
+       "reading": "fréquence de coupure du filtre passe-haut (high-pass filter)"
+      }
+     ]
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut level",
+     "label_fr": "HiCut level",
+     "editIndex": null,
+     "descriptionIndex": 7,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.24 (rendered page and text layer; M2K-FR p.24 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null. The only Edit-page LCD in the manual (M2K-EN p.22, 'EDIT 1 - ROOM') shows 'Reverb Hi', 'Expert mode', then the subtitle LEVELS with 'Mix' and 'Out Level'; the p.24 list places 'HiCut freq.' and 'HiCut level' between 'Expert mode' and 'Mix'. The printed list is therefore not the Edit-page order for this algorithm. Absent between 'Expert mode' and the LEVELS subtitle on the p.22 LCD: its Edit-page position is unknown.",
+     "cite": [
+      "M2K-EN p.24: 'HiCut level', 'Damping ratio in dB of the HighCut filter.'",
+      "M2K-FR p.24: 'Niveau de l’atténuation en dB du filtre coupe-haut.'"
+     ],
+     "note": "Unit dB printed in the description; range and step not printed."
+    },
+    {
+     "key": "diffuse",
+     "label_en": "Diffuse",
+     "label_fr": "Diffuse",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Diffuse', 'This parameter sets the degree of wall diffusion.'",
+      "M2K-FR p.24: 'Ce paramètre détermine le facteur de diffusion des murs.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "room-shape",
+     "label_en": "Room shape",
+     "label_fr": "Room shape",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Room shape', 'Here you can choose between different room shapes.'",
+      "M2K-FR p.24: 'Ce paramètre vous permet de définir la forme de la pièce.'"
+     ],
+     "note": "Enumeration; the shapes are not named and their number is not printed."
+    },
+    {
+     "key": "size-mult",
+     "label_en": "Size mult.",
+     "label_fr": "Size mult.",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Size mult.', 'Size multiplication factor.'",
+      "M2K-FR p.24: 'Coefficient multiplicateur de taille'"
+     ],
+     "note": "Acts on the initial reflections only (p.24). Range not printed."
+    },
+    {
+     "key": "lo-crossover",
+     "label_en": "Lo Crossover",
+     "label_fr": "Lo Crossover",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Lo Crossover', 'Crossover frequency between low and mid band'",
+      "M2K-FR p.24: 'Détermine la fréquence de coupure entre les graves et les'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "mid-crossover",
+     "label_en": "Mid Crossover",
+     "label_fr": "Mid Crossover",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Mid Crossover', 'Crossover frequency between lo-mid and hi-mid band'",
+      "M2K-FR p.24: 'Détermine la fréquence de coupure entre les bas-médium et'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "hi-crossover",
+     "label_en": "Hi Crossover",
+     "label_fr": "Hi Crossover",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Hi Crossover', 'Crossover frequency between mid and high band'",
+      "M2K-FR p.24: 'Détermine la fréquence de coupure entre les médiums et les'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "initial-level",
+     "label_en": "Initial lev.",
+     "label_fr": "Initial lev.",
+     "editIndex": null,
+     "descriptionIndex": 6,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Initial lev.', 'Sets the Initial reflection level.'",
+      "M2K-FR p.24: 'Détermine le niveau des premières réflexions.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "rev-level",
+     "label_en": "Rev.lev.",
+     "label_fr": "Rev.lev.",
+     "editIndex": null,
+     "descriptionIndex": 7,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Rev.lev.', 'Level of the reverberation tail.'",
+      "M2K-FR p.24: 'Détermine le niveau de la chute de réverbération.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "rev-width",
+     "label_en": "Rev.width",
+     "label_fr": "Rev.width",
+     "editIndex": null,
+     "descriptionIndex": 8,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Rev.width', 'This parameter adjust the stereo width of the reverb tail.'",
+      "M2K-FR p.24: 'Détermine la largeur du champ stéréo de la chute de la'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "rev-feed",
+     "label_en": "Rev Feed",
+     "label_fr": "Rev Feed",
+     "editIndex": null,
+     "descriptionIndex": 9,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Rev Feed', 'Determines how fast the reverberation will build up.'",
+      "M2K-FR p.24: 'Temps mis par la réverb pour atteindre son niveau maximal.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "rev-diff",
+     "label_en": "Rev.diff",
+     "label_fr": "Rev.diff",
+     "editIndex": null,
+     "descriptionIndex": 10,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Rev.diff', 'Imposes the characteristics of the early reflections on the'",
+      "M2K-FR p.24: 'Influence des premières réflexions sur la fin de la réverb.'"
+     ],
+     "note": "Values not printed."
+    },
+    {
+     "key": "distance",
+     "label_en": "Distance",
+     "label_fr": "Distance",
+     "editIndex": null,
+     "descriptionIndex": 11,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Distance', 'The relative distance control varies the mix relations'",
+      "M2K-FR p.24: 'Cette distance modifie le mixage des premières réflexions et'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "diffusor-type",
+     "label_en": "Difusor type",
+     "label_fr": "Difusor type",
+     "editIndex": null,
+     "descriptionIndex": 12,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Difusor type', 'The natural room mode peak frequencies and the smoothness'",
+      "M2K-FR p.24: 'Ce paramètre modifie la forme des crêtes et la douceur de la'"
+     ],
+     "note": "Enumeration (spelling 'Difusor' as printed); values not named."
+    },
+    {
+     "key": "mod-rate",
+     "label_en": "Mod Rate",
+     "label_fr": "Mod Rate",
+     "editIndex": null,
+     "descriptionIndex": 13,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Mod Rate', 'The MODRATE varies the rate of modulation'",
+      "M2K-FR p.24: 'Le paramètre MODRATE détermine la fréquence de'"
+     ],
+     "note": "Range not printed. FR describes it as a 're-injection frequency' (translation drift, no value impact)."
+    },
+    {
+     "key": "mod-depth",
+     "label_en": "Mod Depth",
+     "label_fr": "Mod Depth",
+     "editIndex": null,
+     "descriptionIndex": 14,
+     "layer": "expert",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the EXPERT PARAMETERS list ('only additional parameters mentioned'), M2K-EN p.24, read on the rendered page (left column ends with Diffuse, list continues in the right column). Expert-mode CC numbering differs ('the parameter/CC range is different if a preset is set into Expert mode', M2K-CC) and is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.24: 'Mod Depth', 'Controls the amount of delay path modulation or'",
+      "M2K-FR p.24: 'Détermine la profondeur du retard dans la réverbération.'"
+     ],
+     "note": "Range not printed."
+    }
+   ],
+   "notes": [
+    "Whether HALL, ROOM, PLATE, AMBIENCE and GATED are separate algorithms with separate Edit pages is not stated; the LCD calls the edited one an algorithm ('EDIT 1 - ROOM'), and the parameter set varies.",
+    "EN p.24 'The number of parameters depends on which preset you have selected' versus FR p.24 'Les nombre de paramètres disponibles dépend du mode choisi' (depends on the User/Expert mode): conflict on what selects the parameter set.",
+    "LCD spelling differs between 'PLATES' (Recall) and 'PLATE' (Combined Recall), p.10.",
+    "TC support: 'M2000 holds reverb algorithms from the M5000' and the VSS3 algorithm 'is not present in the M2000' (KB-M2K-VSS3). The manual never names the algorithm(s); only TC's comparison sheet calls them 'Rev2, Rev3' (TC-REVCMP), without saying which type uses which.",
+    "The expert list is a union of names found on the M3000 C.O.R.E. page (Room shape, Size, Early/Reverb level, Rev width, Rev Delay 'build up', Rev diff) and Rev-3 page (Diffuse, Distance, Diffuser type, Mod Rate/Depth, three crossovers): see MAPPING-M2000-M3000.json. This is a wording observation, not a TC statement."
+   ]
+  },
+  {
+   "key": "chorus",
+   "name_en": "Chorus",
+   "name_fr": "Chorus",
+   "category": "chorus",
+   "manualPages": [
+    "M2K-EN p.25",
+    "M2K-FR p.25"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.25: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.25: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.25: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "speed",
+     "label_en": "Speed",
+     "label_fr": "Speed",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": 0.1,
+     "max": 10,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Speed', 'Controls the rate of sweep in a range from 1 sweep every 10', 'seconds to 10 sweeps every second.'",
+      "M2K-FR p.25: 'de 1 balayage toutes les', '10 secondes à 10 balayages par seconde.'"
+     ],
+     "note": "Printed as a sweep rate from 1 sweep every 10 seconds (0.1 Hz) to 10 sweeps per second (10 Hz); min/max are expressed in Hz (= sweeps per second). The LCD display unit and the step are not printed."
+    },
+    {
+     "key": "depth",
+     "label_en": "Depth",
+     "label_fr": "Depth",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Depth', 'Determines how wide a modulation (sweep) is produced.'",
+      "M2K-FR p.25: 'Détermine la profondeur de l’effet de Chorus.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "phase",
+     "label_en": "Phase",
+     "label_fr": "Phase",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": "deg",
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Phase', 'Determines the sine wave modulation phase shift between'",
+      "M2K-EN p.25: 'At 0º the left and right modulation', 'At 180º the modulation will move the'",
+      "M2K-FR p.25: 'Avec une modulation de 0º, les deux canaux sont'"
+     ],
+     "note": "Only 0° and 180° are mentioned, as examples; whether the value is continuous or a short list (cf. the M3000 Tremolo 0/90/180°) is not printed."
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut Freq.",
+     "label_fr": "HiCut Freq.",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'HiCut Freq.', 'Hicut shelving type filter (6dB/oct).'",
+      "M2K-FR p.25: 'Filtre coupe-haut type Baxendall (6 dB/oct).'"
+     ],
+     "note": "Shelving high-cut, 6 dB/oct slope printed; frequency range not printed."
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut Level",
+     "label_fr": "HiCut Level",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'HiCut Level', 'Sets maximum depth of cut above the HiCut shelving'",
+      "M2K-FR p.25: 'Détermine l’atténuation appliquée lorsque le signal dépasse'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "delay",
+     "label_en": "Delay",
+     "label_fr": "Delay",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Delay', 'Controls the length of delay time.'",
+      "M2K-FR p.25: 'Détermine le délai du Chorus.'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": [
+    "FR p.25 introduction 'Le filtre passe-haut vous permet de' (high-pass) versus EN 'The Hicut filter gives you' (high-cut); the FR parameter text says 'coupe-haut'. Translation error, no value impact.",
+    "Tap-key target: Chorus -> Speed (p.20)."
+   ]
+  },
+  {
+   "key": "flanger",
+   "name_en": "Flanger",
+   "name_fr": "Flanger",
+   "category": "flanger",
+   "manualPages": [
+    "M2K-EN p.25",
+    "M2K-FR p.25"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.25: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.25: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.25: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "speed",
+     "label_en": "Speed",
+     "label_fr": "Speed",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": 0.1,
+     "max": 10,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Speed', 'Controls the rate of sweep in a range from 1 sweep every 10', 'seconds to 10 sweeps every second.'",
+      "M2K-FR p.25: 'de 1 balayage toutes les', '10 secondes à 10 balayages par seconde.'"
+     ],
+     "note": "Printed as a sweep rate from 1 sweep every 10 seconds (0.1 Hz) to 10 sweeps per second (10 Hz); min/max are expressed in Hz (= sweeps per second). The LCD display unit and the step are not printed."
+    },
+    {
+     "key": "depth",
+     "label_en": "Depth",
+     "label_fr": "Depth",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Depth', 'Determines how wide a modulation (sweep) is produced.'",
+      "M2K-FR p.25: 'Détermine la profondeur de l’effet de Flanger.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "phase",
+     "label_en": "Phase",
+     "label_fr": "Phase",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": "deg",
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Phase', 'Determines the sine wave modulation phase shift between'",
+      "M2K-EN p.25: 'At 0º the left and right modulation', 'At 180º the modulation will move the'",
+      "M2K-FR p.25: 'Détermine le déphasage entre les canaux gauche et droit.'"
+     ],
+     "note": "Only 0° and 180° are mentioned, as examples; whether the value is continuous or a short list (cf. the M3000 Tremolo 0/90/180°) is not printed."
+    },
+    {
+     "key": "fb-level",
+     "label_en": "FB Level",
+     "label_fr": "FB Level",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'FB Level', 'Controls the amount of effect signal routed back to the', 'Select negative feedback to change feedback'",
+      "M2K-FR p.25: 'Détermine le taux de réinjection du signal traité dans le'"
+     ],
+     "note": "Negative values exist (negative feedback changes the feedback phase); range not printed."
+    },
+    {
+     "key": "delay",
+     "label_en": "Delay",
+     "label_fr": "Delay",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'Delay', 'Controls the length of delay time.'",
+      "M2K-FR p.25: 'Détermine la durée du délai.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "fb-hicut",
+     "label_en": "FB HiCut",
+     "label_fr": "FB HiCut",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'FB HiCut', 'Feedback High Cutoff frequency. Signal is damped 6dB/oct'",
+      "M2K-FR p.25: 'Fréquence de coupure du filtre coupe-haut.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "fb-locut",
+     "label_en": "FB LoCut",
+     "label_fr": "FB LoCut",
+     "editIndex": null,
+     "descriptionIndex": 6,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'FB LoCut', 'Feedback Low Cutoff frequency. Signal is damped 6dB/oct'",
+      "M2K-FR p.25: 'Fréquence de coupure du filtre coupe-bas.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut Freq.",
+     "label_fr": "HiCut Freq.",
+     "editIndex": null,
+     "descriptionIndex": 7,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'HiCut Freq.', '(see chorus)'",
+      "M2K-FR p.25: '(voir Chorus)'"
+     ],
+     "note": "Described by reference to the Chorus (shelving, 6 dB/oct); range not printed."
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut Level",
+     "label_fr": "HiCut Level",
+     "editIndex": null,
+     "descriptionIndex": 8,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.25 (rendered page and text layer; M2K-FR p.25 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.25: 'HiCut Level', '(see chorus)'",
+      "M2K-FR p.25: '(voir Chorus)'"
+     ],
+     "note": "Described by reference to the Chorus; range not printed."
+    }
+   ],
+   "notes": [
+    "Tap-key target: Flanger -> Speed (p.20)."
+   ]
+  },
+  {
+   "key": "delay",
+   "name_en": "Delay",
+   "name_fr": "Retard",
+   "category": "delay",
+   "manualPages": [
+    "M2K-EN p.26",
+    "M2K-FR p.26",
+    "M2K-EN p.10"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.26: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.26: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.26: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "delay",
+     "label_en": "Delay",
+     "label_fr": "Delay",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": 1200,
+     "step": null,
+     "unit": "ms",
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'The Delay presets are capable of performing up to 1200 ms'",
+      "M2K-EN p.26: 'Delay', 'Controls the length of delay time.'",
+      "M2K-FR p.26: 'd’une durée maximale de 1200 ms.'",
+      "M2K-EN p.10 LCD (image): Engine 2 'TYPE DELAY' with primary parameter 'TIME 25ms'",
+      "M2K-EN p.20: 'Delay time'"
+     ],
+     "note": "Only the maximum (1200 ms) is printed; minimum and step are not. The Recall LCD calls this primary parameter 'TIME'. Tap-key target for Delay (p.20).",
+     "lcdExample": "25ms"
+    },
+    {
+     "key": "fb-level",
+     "label_en": "FB Level",
+     "label_fr": "FB Level",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'FB Level', 'Controls the amount of effect signal routed back to the input.'",
+      "M2K-FR p.26: 'Détermine le taux de réinjection du signal traité.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "fb-hicut",
+     "label_en": "FB HiCut",
+     "label_fr": "FB HiCut",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'FB HiCut', 'Feedback High Cutoff frequency. Signal is damped 6dB/oct'",
+      "M2K-FR p.26: 'Fréquence de coupure du filtre coupe-haut. Une atténuation'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "fb-locut",
+     "label_en": "FB LoCut",
+     "label_fr": "FB LoCut",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'FB LoCut', 'Feedback Low Cutoff frequency. Signal is damped 6dB/oct'",
+      "M2K-FR p.26: 'Fréquence de coupure du filtre coupe-bas. Une atténuation'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut Freq.",
+     "label_fr": "HiCut Freq.",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'HiCut Freq.', 'Hicut shelving type filter (6dB/oct).'",
+      "M2K-FR p.26: 'Filtre coupe-haut de type Baxendall (6 dB/oct).'"
+     ],
+     "note": "Shelving high-cut, 6 dB/oct slope printed; frequency range not printed."
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut Level",
+     "label_fr": "HiCut Level",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'HiCut Level', 'Sets maximum depth of cut above the HiCut shelving'",
+      "M2K-FR p.26: 'Niveau d’atténuation du filtre coupe-haut de type Baxendall.'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": []
+  },
+  {
+   "key": "phaser",
+   "name_en": "Phaser",
+   "name_fr": "Phaser",
+   "category": "phaser",
+   "manualPages": [
+    "M2K-EN p.26",
+    "M2K-FR p.26"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.26: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.26: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.26: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "intensity",
+     "label_en": "Intensity",
+     "label_fr": "Intensity",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'Intensity', 'Phaser intensity.'",
+      "M2K-FR p.26: 'Intensité du Phaser.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "speed",
+     "label_en": "Speed",
+     "label_fr": "Speed",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": 0.1,
+     "max": 10,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'Speed', 'Controls the rate of sweep in a range from 1 sweep every 10', 'seconds to 10 sweeps every second.'",
+      "M2K-FR p.26: 'toutes les 10 secondes à 10 balayages seconde.'"
+     ],
+     "note": "Printed as a sweep rate from 1 sweep every 10 seconds (0.1 Hz) to 10 sweeps per second (10 Hz); min/max are expressed in Hz (= sweeps per second). The LCD display unit and the step are not printed."
+    },
+    {
+     "key": "depth",
+     "label_en": "Depth",
+     "label_fr": "Depth",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'Depth', 'Determines the depth of modulation.'",
+      "M2K-FR p.26: 'Détermine la profondeur de l’effet de Phaser.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut Freq.",
+     "label_fr": "HiCut Freq.",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'HiCut Freq.', 'Hicut shelving type filter (6dB/oct).'",
+      "M2K-FR p.26: 'Filtre coupe-haut de type Baxendall (6 dB/oct).'"
+     ],
+     "note": "Shelving high-cut, 6 dB/oct slope printed; frequency range not printed."
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut Level",
+     "label_fr": "HiCut Level",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.26 (rendered page and text layer; M2K-FR p.26 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.26: 'HiCut Level', 'Sets maximum depth of cut above the HiCut shelving'",
+      "M2K-FR p.26: 'Détermine l’atténuation appliquée lorsque le signal dépasse'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": [
+    "Tap-key target: Phaser -> Speed (p.20)."
+   ]
+  },
+  {
+   "key": "multi-pitch",
+   "name_en": "Multi Pitch-shift",
+   "name_fr": "Multi Pitch-Shifter",
+   "category": "pitch",
+   "manualPages": [
+    "M2K-EN p.27",
+    "M2K-FR p.27"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.27: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.27: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.27: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "voice",
+     "label_en": "Voice",
+     "label_fr": "Voice",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.27 (rendered page and text layer; M2K-FR p.27 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.27: 'Voice', 'Sets which voice you are editing.'",
+      "M2K-EN p.27: 'The Multi pitch presets are capable of performing 6'",
+      "M2K-FR p.27: 'Détermine la voix à éditer.'"
+     ],
+     "note": "Six voices; how the voices are numbered on the display is not printed.",
+     "valueCount": 6
+    },
+    {
+     "key": "pitch",
+     "label_en": "Pitch",
+     "label_fr": "Pitch",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": 0,
+     "max": 1200,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.27 (rendered page and text layer; M2K-FR p.27 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.27: 'Pitch', 'Sets the pitch of the current Voice (0-1200).'",
+      "M2K-FR p.27: 'Plage : 0 à 1200.'"
+     ],
+     "note": "Range printed identically in EN and FR; unit not printed (cents presumed, not stated); step not printed. The M3000 manual prints the same sentence (M3K-EN p.47) while its SysEx range is -1200..1200 (M3000 conflict C8): negative values may exist on the M2000 too; sign handling unverified."
+    },
+    {
+     "key": "level",
+     "label_en": "Level",
+     "label_fr": "Level",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.27 (rendered page and text layer; M2K-FR p.27 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.27: 'Level', 'Sets the level of the current Voice.'",
+      "M2K-FR p.27: 'Détermine le niveau de la voix sélectionnée.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "pan",
+     "label_en": "Pan",
+     "label_fr": "Pan",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.27 (rendered page and text layer; M2K-FR p.27 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.27: 'Pan', 'Sets the panning of the current Voice.'",
+      "M2K-FR p.27: 'Détermine le positionnement panoramique de la voix'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "delay",
+     "label_en": "Delay",
+     "label_fr": "Delay",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.27 (rendered page and text layer; M2K-FR p.27 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.27: 'Delay', 'Sets the Delay of the current Voice.'",
+      "M2K-FR p.27: 'Détermine le retard appliqué à la voix sélectionnée.'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": [
+    "Mix and Out Level are printed first on this page (before Voice), unlike the other program pages: the printed order is not uniform across pages.",
+    "Voice, Pitch, Level, Pan and Delay act on the currently selected voice; per-voice CC addressing is not documented."
+   ]
+  },
+  {
+   "key": "eq",
+   "name_en": "EQ",
+   "name_fr": "Correcteur",
+   "category": "eq",
+   "manualPages": [
+    "M2K-EN p.28",
+    "M2K-FR p.28"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": null,
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "unknown",
+    "cite": [
+     "M2K-CC p.1: 'OUTLEVEL'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "The program page (p.28) lists no Out Level. M2K-CC lists OUTLEVEL (CC 11) without the 'If available' restriction attached to MIX, and p.22 says every Engine Out Level equals the Edit-page Outlev, but this page does not show it: unconfirmed for this algorithm."
+   },
+   "params": [
+    {
+     "key": "low-shelf-freq",
+     "label_en": "Frequency (low shelving)",
+     "label_fr": "Fréquence (filtre basse fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": 20,
+     "max": 5000,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Frequency', 'Low shelving filter ranges from 20hz to 5Khz'",
+      "M2K-FR p.28: 'Filtre basse fréquence de type Baxendall (20 hz à 5 Khz)'"
+     ],
+     "note": "Endpoints printed; frequency law and step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "low-shelf-width",
+     "label_en": "Band width (low shelving)",
+     "label_fr": "Largeur de bande (filtre basse fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Band width', 'Low and high shelving filters have 2 different bandwidths'",
+      "M2K-FR p.28: 'offrent deux largeurs de bande différentes.'"
+     ],
+     "note": "Two values; labels and order not printed (the M3000 manual says '2 different slopes', M3K-EN p.48).",
+     "valueCount": 2,
+     "labelComposed": true
+    },
+    {
+     "key": "low-shelf-level",
+     "label_en": "Level (low shelving)",
+     "label_fr": "Niveau (filtre basse fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Level', 'All filters range +/- 12dB.'",
+      "M2K-FR p.28: 'Tous les filtres ont des plages de +/- 12 dB.'"
+     ],
+     "note": "Step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band1-freq",
+     "label_en": "Frequency (band 1)",
+     "label_fr": "Fréquence (bande 1)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": 20,
+     "max": 20000,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Frequency', 'Three band filters ranges from 20hz to 20Khz'",
+      "M2K-FR p.28: 'Filtre trois bande dont la plage vaire de 20 hz à 20 Khz'"
+     ],
+     "note": "Endpoints printed; frequency law and step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band1-width",
+     "label_en": "Band width (band 1)",
+     "label_fr": "Largeur de bande (bande 1)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Band width', 'The 3 bandfilters have 3 different bandwidths'",
+      "M2K-FR p.28: 'Les filtres 3 bandes offrent 3 largeurs de bande.'"
+     ],
+     "note": "Three values; not printed for the M2000 (the M3000 manual prints 0.10, 0.63 and 4.00 octave, M3K-EN p.48).",
+     "valueCount": 3,
+     "labelComposed": true
+    },
+    {
+     "key": "band1-level",
+     "label_en": "Level (band 1)",
+     "label_fr": "Niveau (bande 1)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Level', 'All filters range +/- 12dB.'",
+      "M2K-FR p.28: 'Tous les filtres ont des plages de +/- 12 dB.'"
+     ],
+     "note": "Step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band2-freq",
+     "label_en": "Frequency (band 2)",
+     "label_fr": "Fréquence (bande 2)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": 20,
+     "max": 20000,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Frequency', 'Three band filters ranges from 20hz to 20Khz'",
+      "M2K-FR p.28: 'Filtre trois bande dont la plage vaire de 20 hz à 20 Khz'"
+     ],
+     "note": "Endpoints printed; frequency law and step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band2-width",
+     "label_en": "Band width (band 2)",
+     "label_fr": "Largeur de bande (bande 2)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Band width', 'The 3 bandfilters have 3 different bandwidths'",
+      "M2K-FR p.28: 'Les filtres 3 bandes offrent 3 largeurs de bande.'"
+     ],
+     "note": "Three values; not printed for the M2000 (the M3000 manual prints 0.10, 0.63 and 4.00 octave, M3K-EN p.48).",
+     "valueCount": 3,
+     "labelComposed": true
+    },
+    {
+     "key": "band2-level",
+     "label_en": "Level (band 2)",
+     "label_fr": "Niveau (bande 2)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Level', 'All filters range +/- 12dB.'",
+      "M2K-FR p.28: 'Tous les filtres ont des plages de +/- 12 dB.'"
+     ],
+     "note": "Step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band3-freq",
+     "label_en": "Frequency (band 3)",
+     "label_fr": "Fréquence (bande 3)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": 20,
+     "max": 20000,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Frequency', 'Three band filters ranges from 20hz to 20Khz'",
+      "M2K-FR p.28: 'Filtre trois bande dont la plage vaire de 20 hz à 20 Khz'"
+     ],
+     "note": "Endpoints printed; frequency law and step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "band3-width",
+     "label_en": "Band width (band 3)",
+     "label_fr": "Largeur de bande (bande 3)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Band width', 'The 3 bandfilters have 3 different bandwidths'",
+      "M2K-FR p.28: 'Les filtres 3 bandes offrent 3 largeurs de bande.'"
+     ],
+     "note": "Three values; not printed for the M2000 (the M3000 manual prints 0.10, 0.63 and 4.00 octave, M3K-EN p.48).",
+     "valueCount": 3,
+     "labelComposed": true
+    },
+    {
+     "key": "band3-level",
+     "label_en": "Level (band 3)",
+     "label_fr": "Niveau (bande 3)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Level', 'All filters range +/- 12dB.'",
+      "M2K-FR p.28: 'Tous les filtres ont des plages de +/- 12 dB.'"
+     ],
+     "note": "Step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "high-shelf-freq",
+     "label_en": "Frequency (high shelving)",
+     "label_fr": "Fréquence (filtre haute fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": 500,
+     "max": 20000,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Frequency', 'High shelving filter ranges from 500hz to 20Khz'",
+      "M2K-FR p.28: 'Filtre haute fréquence de type Baxendall (500 hz à 20 Khz)'"
+     ],
+     "note": "Endpoints printed; frequency law and step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "high-shelf-width",
+     "label_en": "Band width (high shelving)",
+     "label_fr": "Largeur de bande (filtre haute fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Band width', 'Low and high shelving filters have 2 different bandwidths'",
+      "M2K-FR p.28: 'offrent deux largeurs de bande différentes.'"
+     ],
+     "note": "Two values; labels and order not printed (the M3000 manual says '2 different slopes', M3K-EN p.48).",
+     "valueCount": 2,
+     "labelComposed": true
+    },
+    {
+     "key": "high-shelf-level",
+     "label_en": "Level (high shelving)",
+     "label_fr": "Niveau (filtre haute fréquence)",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'Level', 'All filters range +/- 12dB.'",
+      "M2K-FR p.28: 'Tous les filtres ont des plages de +/- 12 dB.'"
+     ],
+     "note": "Step not printed.",
+     "labelComposed": true
+    },
+    {
+     "key": "eq-level",
+     "label_en": "EQ level",
+     "label_fr": "Niveau du correcteur - EQ level",
+     "editIndex": null,
+     "descriptionIndex": null,
+     "layer": "user",
+     "kind": "value",
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "The EQ page describes its parameters collectively (Frequency, Band width and Level for the low shelf, the high shelf and the three bands, then EQ level); no per-band order and no Edit page are printed: editIndex = null and descriptionIndex = null. The array order (low shelf, bands 1-3, high shelf, EQ level) is this transcription's choice.",
+     "cite": [
+      "M2K-EN p.28: 'EQ level', 'Adjustable +/-12dB.'",
+      "M2K-FR p.28: 'Réglable sur une plage de +/-12 dB.'"
+     ],
+     "note": "Step not printed. Its relation to the engine Out Level (CC 11, off - 0.0 dB) is not documented."
+    }
+   ],
+   "notes": [
+    "Diagram label '6 BAND PAR-EQ' (image, EN and FR p.28) versus text 'The EQ programs are all 3 band parametric types with separate high and low shelving bands' (5 bands): conflict on the band count; this transcription follows the text (5 bands).",
+    "mix = null: the page lists no Mix (M2K-CC only says Mix is unavailable in compressor presets; EQ is not mentioned)."
+   ]
+  },
+  {
+   "key": "tremolo",
+   "name_en": "Tremolo",
+   "name_fr": "Trémolo",
+   "category": "tremolo",
+   "manualPages": [
+    "M2K-EN p.28",
+    "M2K-FR p.28"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.28: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.28: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.28: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "speed",
+     "label_en": "Speed",
+     "label_fr": "Speed",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": 0.1,
+     "max": 10,
+     "step": null,
+     "unit": "Hz",
+     "labels": null,
+     "status": "confirmed",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.28 (rendered page and text layer; M2K-FR p.28 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.28: 'Speed', 'Controls the rate of sweep in a range from 1 sweep every 10', 'seconds to 10 sweeps every second.'",
+      "M2K-FR p.28: 'Détermine la fréquence de balayage : de 1 balayage toutes', 'les 10 secondes à 10 balayage par seconde.'"
+     ],
+     "note": "Printed as a sweep rate from 1 sweep every 10 seconds (0.1 Hz) to 10 sweeps per second (10 Hz); min/max are expressed in Hz (= sweeps per second). The LCD display unit and the step are not printed."
+    },
+    {
+     "key": "depth",
+     "label_en": "Depth [intensity]",
+     "label_fr": "Depth [intensity]",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.28 (rendered page and text layer; M2K-FR p.28 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.28: 'Depth [intensity]', 'Determines how wide a modulation (sweep) is produced.'",
+      "M2K-FR p.28: 'Détermine la profondeur de la modulation apportée par le'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "phase",
+     "label_en": "Phase",
+     "label_fr": "Phase",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": "deg",
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.28 (rendered page and text layer; M2K-FR p.28 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.28: 'Phase', 'Determines the sine wave modulation phase shift between'",
+      "M2K-EN p.28: 'At 0º the left and right modulation', 'At 180º the modulation will move the'",
+      "M2K-FR p.28: 'Détermine la modification de phase entre les canaux gauche'"
+     ],
+     "note": "Only 0° and 180° are mentioned, as examples; whether the value is continuous or a short list (cf. the M3000 Tremolo 0/90/180°) is not printed."
+    }
+   ],
+   "notes": [
+    "The diagram (image, p.28) shows a HICUT block ahead of TREMOLO, but no HiCut parameter is listed.",
+    "Tap-key target: Tremolo -> Speed (p.20). The Tap list also names a 'Panner' (p.20) and the preset list has Panner presets (122-124, p.36), but no Panner program page exists; the M3000 manual says its Tremolo becomes a Panner with LFO phase 180° (M3K-EN p.50)."
+   ]
+  },
+  {
+   "key": "stereo",
+   "name_en": "Stereo",
+   "name_fr": "Stéréo",
+   "category": "stereo",
+   "manualPages": [
+    "M2K-EN p.29",
+    "M2K-FR p.29"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "mix": {
+    "min": null,
+    "max": 100,
+    "unit": "%",
+    "status": "unknown",
+    "cite": [
+     "M2K-EN p.29: 'Mix', 'Mix between direct and effect.'",
+     "M2K-EN p.14: 'Mix parameter of all presets will be 100%'",
+     "M2K-EN p.22 LCD (image): subtitle 'LEVELS', line 'Mix : 100%'",
+     "M2K-FR p.29: 'Mix'"
+    ],
+    "note": "Only the 100 % ceiling and the % unit are printed (global I/O Mix p.14, LCD p.22); minimum and step are not printed."
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed",
+    "cite": [
+     "M2K-EN p.29: 'Out Level', 'Adjust output level.'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "Printed range 'off - 0.0 dB' (Combined Edit), stated identical to the Edit-page Outlev parameter. min = null because the lower end is printed as 'off'; the dB value of the lowest step and the step size are not printed."
+   },
+   "params": [
+    {
+     "key": "spatial",
+     "label_en": "Spatial",
+     "label_fr": "Spatial",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Spatial', 'Controls the amount of spatial expansion.'",
+      "M2K-FR p.29: 'Détermine la largeur du champ stéréo.'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "hicut-freq",
+     "label_en": "HiCut Freq.",
+     "label_fr": "HiCut Freq.",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'HiCut Freq.', 'Hicut shelving type filter (12dB/oct).'",
+      "M2K-FR p.29: 'Filtre coupe-haut de type Baxendall (12 dB/oct).'"
+     ],
+     "note": "Shelving high-cut, 12 dB/oct slope printed; frequency range not printed."
+    },
+    {
+     "key": "hicut-level",
+     "label_en": "HiCut Level",
+     "label_fr": "HiCut Level",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'HiCut Level', 'Sets maximum depth of cut above the HiCut shelving'",
+      "M2K-FR p.29: 'Détermine l’atténuation maximale apportée par le filtre'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": [
+    "No introduction and no diagram on this page; presets 'Mono to Stereo' and 'Expanded Mono' (p.36) are candidates by name only."
+   ]
+  },
+  {
+   "key": "dynamic",
+   "name_en": "Dynamic",
+   "name_fr": "Traitement de la dynamique",
+   "category": "dynamics",
+   "manualPages": [
+    "M2K-EN p.29",
+    "M2K-FR p.29",
+    "M2K-CC p.1"
+   ],
+   "expertModeDiffers": false,
+   "expertModeEvidence": [
+    "M2K-EN p.22: 'access a detailed Edit mode of the Reverbs' (Expert mode is described for the Reverbs only)"
+   ],
+   "variants": [
+    "COMPRESSOR",
+    "LIMITER",
+    "GATE",
+    "DE'ESSER"
+   ],
+   "variantsCite": [
+    "M2K-EN p.29: 'Dynamic Programs', 'COMPRESSOR-LIMITER-GATE-DE' (heading continues with the de-esser)",
+    "M2K-FR p.29: 'COMPRESSEUR-LIMITEUR-NOISE GATE'",
+    "M2K-EN p.13: 'Dynamic (compressor/limiting/expanding/deessing)'"
+   ],
+   "mix": null,
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "unknown",
+    "cite": [
+     "M2K-CC p.1: 'OUTLEVEL'",
+     "M2K-EN p.22: 'The range is: off - 0.0 dB.'",
+     "M2K-EN p.22: 'The Engine Out Levels are identical with the Outlev. parameter'",
+     "M2K-FR p.22: 'Plage de réglage : off à 0,0 dB.'",
+     "M2K-EN p.22 LCD (image): line 'Out Level : -20dB'"
+    ],
+    "note": "The program page (p.29) lists no Out Level. M2K-CC lists OUTLEVEL (CC 11) without the 'If available' restriction attached to MIX, and p.22 says every Engine Out Level equals the Edit-page Outlev, but this page does not show it: unconfirmed for this algorithm."
+   },
+   "params": [
+    {
+     "key": "attack",
+     "label_en": "Attack",
+     "label_fr": "Attack",
+     "editIndex": null,
+     "descriptionIndex": 0,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Attack', 'Dynamics attack time.'",
+      "M2K-FR p.29: 'Temps d’attaque du traitement de la dynamique.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "release",
+     "label_en": "Release",
+     "label_fr": "Release",
+     "editIndex": null,
+     "descriptionIndex": 1,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Release', 'Dynamics release time.'",
+      "M2K-FR p.29: 'Temps de rétablissement du traitement de la dynamique.'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "ratio",
+     "label_en": "Ratio",
+     "label_fr": "Ratio",
+     "editIndex": null,
+     "descriptionIndex": 2,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Ratio', 'Compression ratio.'",
+      "M2K-FR p.29: 'Taux de compression.'"
+     ],
+     "note": "Values not printed."
+    },
+    {
+     "key": "threshold-compressor",
+     "label_en": "Threshold (compressor)",
+     "label_fr": "Seuil (compresseur)",
+     "editIndex": null,
+     "descriptionIndex": 3,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Threshold (compressor)', 'The compressor will be engaged'",
+      "M2K-FR p.29: 'Seuil - Thershold (compresseur)'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "threshold-limiter",
+     "label_en": "Threshold (limiter)",
+     "label_fr": "Seuil (limiteur)",
+     "editIndex": null,
+     "descriptionIndex": 4,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Threshold (limiter)', 'The limiter will be engaged'",
+      "M2K-FR p.29: 'Seuil (limiteur)'"
+     ],
+     "note": "Range and unit not printed."
+    },
+    {
+     "key": "threshold-expander",
+     "label_en": "Threshold (expander)",
+     "label_fr": "Seuil (expanseur)",
+     "editIndex": null,
+     "descriptionIndex": 5,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Threshold (expander)', 'The expander is active below this'",
+      "M2K-FR p.29: 'Seuil (expanseur)', 'L’expanseur est activé lorsque le signal'"
+     ],
+     "note": "EN: active below the threshold; FR: active when the signal 'franchit ce seuil' (crosses it, direction not stated): wording differs, no contradiction. Range not printed."
+    },
+    {
+     "key": "gain",
+     "label_en": "Gain (make-up gain)",
+     "label_fr": "Gain",
+     "editIndex": null,
+     "descriptionIndex": 6,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Gain (make-up gain)', 'The gain parameter compensates for the compression gain'",
+      "M2K-FR p.29: 'Ce réglage vous permet de compenser la perte de gain'"
+     ],
+     "note": "Range not printed."
+    },
+    {
+     "key": "deessing-frequency",
+     "label_en": "Deessing frequency",
+     "label_fr": "Fréquence du dé-esseur",
+     "editIndex": null,
+     "descriptionIndex": 7,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Deessing frequency', 'attack frequency'",
+      "M2K-FR p.29: 'Fréquence du dé-esseur - Deessing Frequency', 'Fréquence traitée par le dé-esseur.'"
+     ],
+     "note": "EN calls it the de-esser's attack frequency, FR the frequency treated. Range not printed."
+    },
+    {
+     "key": "deess-damp",
+     "label_en": "Deess damp",
+     "label_fr": "Deess damp",
+     "editIndex": null,
+     "descriptionIndex": 8,
+     "layer": "user",
+     "kind": "value",
+     "min": null,
+     "max": null,
+     "step": null,
+     "unit": null,
+     "labels": null,
+     "status": "unknown",
+     "orderEvidence": "Printed order of the USER PARAMETERS list, M2K-EN p.29 (rendered page and text layer; M2K-FR p.29 same order). descriptionIndex = printed position, Mix and Out Level excluded. The manual never shows this algorithm's Edit page, so the order behind CC 12, 13, ... is not documented: editIndex = null.",
+     "cite": [
+      "M2K-EN p.29: 'Deess damp', 'The damping ratio of unwanted'",
+      "M2K-FR p.29: 'Taux indiquant la réduction de gain appliquée sur les'"
+     ],
+     "note": "Range and unit not printed."
+    }
+   ],
+   "notes": [
+    "One program page covers compressor, limiter, gate (expander) and de-esser; whether these are four algorithms using subsets of the nine parameters or one combined algorithm is not stated.",
+    "mix = null: 'If available (i.e. not in compressor presets)' (M2K-CC) and no Mix on this page."
+   ]
+  }
+ ],
+ "system": [
+  {
+   "name": "INPUT",
+   "cc": 10,
+   "label_en": "Input (source selector or input type)",
+   "label_fr": "Entrée",
+   "labels": [
+    "ANA",
+    "SPDIF",
+    "AES"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "name (ambiguous)",
+   "cite": [
+    "M2K-CC p.1: 'INPUT 10'",
+    "M2K-EN p.14: 'Select Input source Analog/Digital.', 'Select Input type Left/Both.'",
+    "M2K-EN p.14 LCD (image): heading 'INPUT:' over two rows 'ANA SPDIF AES' and 'LEFT BOTH'"
+   ],
+   "note": "Two Input fields share the LCD heading INPUT; the CC row does not say which one it addresses (STMODE may be the Left/Both field). labels = the source-selector boxes left to right, a candidate only; CC value to label scaling not printed."
+  },
+  {
+   "name": "STATUSBIT OUT",
+   "cc": 11,
+   "label_en": "Status Bit",
+   "label_fr": "Bit de statut",
+   "labels": [
+    "S/PDIF",
+    "AES/EBU"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "name",
+   "cite": [
+    "M2K-CC p.1: 'STATUSBIT OUT 11'",
+    "M2K-EN p.14: 'Select Status Bit output:', 'SP/DIF OR AES/EBU standard.', 'The defaults setting is AES/EBU'",
+    "M2K-EN p.14 LCD (image): 'STATUS BIT:' boxes 'SPDIF AES'"
+   ],
+   "note": "Order uncertain: LCD boxes SPDIF then AES (left to right) and the callout names SP/DIF first, while the text describes AES first. Same situation as the M3000 row (DISPLAY-MAP: unknown)."
+  },
+  {
+   "name": "STMODE",
+   "cc": 12,
+   "label_en": "STMODE (no manual field of that name)",
+   "label_fr": "STMODE",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "none",
+   "cite": [
+    "M2K-CC p.1: 'STMODE 12'",
+    "M2K-EN p.14: 'Select Input type Left/Both.', 'When you select Left the right input'"
+   ],
+   "note": "Candidate by meaning only: the input type Left/Both (LCD 'LEFT BOTH', p.14). On the M3000, STMODE is the Stereo/Left/Right channel selector (M3K-EN p.16)."
+  },
+  {
+   "name": "CLOCK",
+   "cc": 13,
+   "label_en": "Sample rate (master clock)",
+   "label_fr": "Echantillonnage",
+   "labels": [
+    "44.1 kHz",
+    "48 kHz",
+    "DI"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "confirmed",
+   "pairing": "name",
+   "cite": [
+    "M2K-CC p.1: 'CLOCK 13'",
+    "M2K-EN p.14: 'Select Master clock 44.1 kHz/48 kHz/DI.'",
+    "M2K-EN p.14 LCD (image): 'SAMPLERATE:' boxes '44.1 48.0 DI'",
+    "M2K-FR p.14: 'Sélectionnez la vitesse de l’horloge 44,1 kHz/48 kHz/Entrée num.'"
+   ],
+   "note": "Same order in the text and on the LCD (left to right); DI = clock taken from the digital input (three blinking LEDs if it cannot lock). CC value to index scaling not printed."
+  },
+  {
+   "name": "KILLDRY",
+   "cc": 14,
+   "label_en": "Mix (global: MIX or 100%)",
+   "label_fr": "Mix (global)",
+   "labels": [
+    "MIX",
+    "100%"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "meaning",
+   "cite": [
+    "M2K-CC p.1: 'KILLDRY 14'",
+    "M2K-EN p.14: 'Here you can freeze mix to 100%', 'When Mix is set to “Mix”, the parameter is adjustable.'",
+    "M2K-EN p.14 LCD (image): 'MIX:' boxes 'MIX 100%'"
+   ],
+   "note": "Paired by meaning (kill dry = Mix frozen at 100 %); index order not printed as such (LCD boxes MIX, 100%)."
+  },
+  {
+   "name": "DITHER",
+   "cc": 15,
+   "label_en": "Dither",
+   "label_fr": "Dither",
+   "labels": null,
+   "min": 8,
+   "max": null,
+   "unit": "bit",
+   "status": "conflict",
+   "pairing": "name",
+   "cite": [
+    "M2K-CC p.1: 'DITHER 15'",
+    "M2K-EN p.14: 'The M2000 can output Dither from 8 to 22 bit resolution on the'",
+    "M2K-FR p.14: 'Le M2000 peut appliquer un Dither au signal de sortie de 8 ou'",
+    "M2K-EN p.31: 'HPF TPDF dither 8 to 24 bit'",
+    "M2K-EN p.14: 'Automatically set to default value,', 'when changing Status Bit.'",
+    "M2K-EN p.14 LCD (image): 'DITHER TO 16 BIT'"
+   ],
+   "note": "max = null until the conflict is resolved. Whether an Off value exists is not printed (the text advises not to use dither).",
+   "readings": [
+    {
+     "id": "A",
+     "source": "M2K-EN p.14",
+     "reading": "8 to 22 bit"
+    },
+    {
+     "id": "B",
+     "source": "M2K-FR p.14",
+     "reading": "8 ou 22 bits (8 or 22 bit)"
+    },
+    {
+     "id": "C",
+     "source": "M2K-EN p.31",
+     "reading": "8 to 24 bit"
+    }
+   ]
+  },
+  {
+   "name": "ALIN",
+   "cc": 16,
+   "label_en": "Analog input level (left)",
+   "label_fr": "Niveau d’entrée analogique (gauche)",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": "dB",
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'ALIN 16'",
+    "M2K-EN p.15: 'Analog Inputs', 'Consumer range: -16dB to +10dB', 'Professional range: -6dB to +16dB'",
+    "M2K-FR p.15: 'Plage Consumer* : -16 dB à +10 dB'",
+    "M2K-EN p.15 LCD (image): 'INPUT:' 'CON: -10dBu', bar L '-10dB'"
+   ],
+   "note": "Range depends on PROINPUT (Consumer/Professional); min/max = null, see rangesByMode. Step not printed.",
+   "rangesByMode": [
+    {
+     "mode": "Consumer",
+     "min": -16,
+     "max": 10
+    },
+    {
+     "mode": "Professional",
+     "min": -6,
+     "max": 16
+    }
+   ]
+  },
+  {
+   "name": "ARIN",
+   "cc": 17,
+   "label_en": "Analog input level (right)",
+   "label_fr": "Niveau d’entrée analogique (droite)",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": "dB",
+   "status": "conflict",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'ARIN 17'",
+    "M2K-EN p.15: 'Analog Inputs', 'Consumer range: -16dB to +10dB', 'Professional range: -6dB to +16dB'",
+    "M2K-FR p.15: 'Plage Consumer* : -16 dB à +10 dB'",
+    "M2K-EN p.15 LCD (image): 'INPUT:' 'CON: -10dBu', bar R '+16dB'"
+   ],
+   "note": "Text versus LCD example.",
+   "rangesByMode": [
+    {
+     "mode": "Consumer",
+     "min": -16,
+     "max": 10
+    },
+    {
+     "mode": "Professional",
+     "min": -6,
+     "max": 16
+    }
+   ],
+   "readings": [
+    {
+     "id": "A",
+     "source": "M2K-EN p.15 text",
+     "reading": "Consumer range -16 dB to +10 dB"
+    },
+    {
+     "id": "B",
+     "source": "M2K-EN p.15 LCD",
+     "reading": "R +16 dB shown while the input is set to CON (outside the printed consumer range)"
+    }
+   ]
+  },
+  {
+   "name": "ALOUT",
+   "cc": 18,
+   "label_en": "Analog output level (left)",
+   "label_fr": "Niveau de sortie analogique (gauche)",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": "dB",
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'ALOUT 18'",
+    "M2K-EN p.15: 'Analog Outputs', 'Consumer range: -10dB to +16dB', 'Professional range: -16dB to +6dB'",
+    "M2K-FR p.15: 'Plage Consumer* : -10 dB à +16 dB'",
+    "M2K-EN p.15 LCD (image): 'OUTPUT:' 'PRO: +6dBu', bar L '-16dB'"
+   ],
+   "note": "Range depends on PROOUTPUT; the LCD example (PRO, -16 dB) is consistent. Step not printed.",
+   "rangesByMode": [
+    {
+     "mode": "Consumer",
+     "min": -10,
+     "max": 16
+    },
+    {
+     "mode": "Professional",
+     "min": -16,
+     "max": 6
+    }
+   ]
+  },
+  {
+   "name": "AROUT",
+   "cc": 19,
+   "label_en": "Analog output level (right)",
+   "label_fr": "Niveau de sortie analogique (droite)",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": "dB",
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'AROUT 19'",
+    "M2K-EN p.15: 'Analog Outputs', 'Consumer range: -10dB to +16dB', 'Professional range: -16dB to +6dB'",
+    "M2K-FR p.15: 'Plage Consumer* : -10 dB à +16 dB'",
+    "M2K-EN p.15 LCD (image): 'OUTPUT:' 'PRO: +6dBu', bar R '+4dB'"
+   ],
+   "note": "Range depends on PROOUTPUT; the LCD example (PRO, +4 dB) is consistent. Step not printed.",
+   "rangesByMode": [
+    {
+     "mode": "Consumer",
+     "min": -10,
+     "max": 16
+    },
+    {
+     "mode": "Professional",
+     "min": -16,
+     "max": 6
+    }
+   ]
+  },
+  {
+   "name": "DOUT",
+   "cc": 20,
+   "label_en": "DOUT (meaning not printed)",
+   "label_fr": "DOUT",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "none",
+   "cite": [
+    "M2K-CC p.1: 'DOUT 20'",
+    "M2K-EN p.15: 'Adjust the Digital Input from:', 'Off to +6dB.'",
+    "M2K-EN p.15 LCD (image): 'DIGITAL IN' bar '+6dB'"
+   ],
+   "note": "The manual has a Digital Input level (Off to +6 dB) but no digital output level; DOUT is a candidate for the Digital In level by elimination only (the M3000 dossier records the same oddity, C11)."
+  },
+  {
+   "name": "BYPASS1",
+   "cc": 21,
+   "label_en": "Bypass Engine 1",
+   "label_fr": "Bypass moteur 1",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'BYPASS1 21'",
+    "M2K-EN p.7: 'Individual bypass key for'",
+    "M2K-EN p.19: 'Engine 1 Bypass, Engine 2 Bypass, Engine 1+2 Bypass and Tap'"
+   ],
+   "note": "Values (on/off) not printed."
+  },
+  {
+   "name": "BYPASS2",
+   "cc": 22,
+   "label_en": "Bypass Engine 2",
+   "label_fr": "Bypass moteur 2",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'BYPASS2 22'",
+    "M2K-EN p.7: 'Individual bypass key for'",
+    "M2K-EN p.19: 'Engine 1 Bypass, Engine 2 Bypass, Engine 1+2 Bypass and Tap'"
+   ],
+   "note": "Values (on/off) not printed."
+  },
+  {
+   "name": "DYNMORPH",
+   "cc": 23,
+   "label_en": "Dynamic Morphing (off / direction)",
+   "label_fr": "Morphing dynamique (off / direction)",
+   "labels": [
+    "OFF",
+    "1-2",
+    "2-1"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'DYNMORPH 23'",
+    "M2K-EN p.23: 'Morph direction 1-2:', 'Morph direction 2-1:'",
+    "M2K-EN p.23 LCD (image): 'DYNAMIC MORPHING:' boxes 'OFF 1-2 2-1'",
+    "M2K-EN p.23: 'The Dynamic Morphing function is only available when Routing'",
+    "M2K-FR p.23: 'La fonction de Morphing dynamique est également disponible'"
+   ],
+   "note": "LCD boxes left to right. Availability wording conflicts: EN 'only available when Routing is set to Parallel', FR 'également disponible avec un système d’affectation du signal en parallèle' (also available with parallel routing); the value list is not affected. Stored with Combined presets."
+  },
+  {
+   "name": "DYNSPEED",
+   "cc": 24,
+   "label_en": "Morphing speed",
+   "label_fr": "Vitesse du Morphing",
+   "labels": [
+    "SLOW",
+    "MED",
+    "FAST"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'DYNSPEED 24'",
+    "M2K-EN p.23: 'Morphing speed'",
+    "M2K-EN p.23 LCD (image): 'SPEED:' boxes 'SLOW MED FAST'"
+   ],
+   "note": "LCD boxes left to right."
+  },
+  {
+   "name": "DYNTHRS",
+   "cc": 25,
+   "label_en": "Morphing threshold",
+   "label_fr": "Seuil du Morphing",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'DYNTHRS 25'",
+    "M2K-EN p.23: 'Morphing threshold'",
+    "M2K-EN p.23 LCD (image): 'THRESHOLD: -20dB'"
+   ],
+   "note": "Unit dB seen only in the LCD example; range not printed.",
+   "lcdExample": "-20dB",
+   "unitHint": "dB"
+  },
+  {
+   "name": "GLIDETIME",
+   "cc": 26,
+   "label_en": "Glide time",
+   "label_fr": "Temps de glissement de programme",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "name",
+   "cite": [
+    "M2K-CC p.1: 'GLIDETIME 26'",
+    "M2K-EN p.18: 'Glide time', 'This parameter sets the glide time of the incoming preset.'",
+    "M2K-EN p.18 LCD (image): 'PRESET GLIDE:' 'Glide time : 0.5s'"
+   ],
+   "note": "Active only with the Preset Glide routing; range not printed.",
+   "lcdExample": "0.5s",
+   "unitHint": "s"
+  },
+  {
+   "name": "TAPTIME",
+   "cc": 27,
+   "label_en": "Tap time / tempo (meaning not printed)",
+   "label_fr": "Tempo Tap",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation (weak)",
+   "cite": [
+    "M2K-CC p.1: 'TAPTIME 27'",
+    "M2K-EN p.20: 'Tapped time in ms.', 'This is read only parameters displaying the tapped time and the'",
+    "M2K-EN p.20 LCD (image): 'Tempo BPM : 120BPM', 'TAP TIME: 500ms'"
+   ],
+   "note": "The Tempo menu shows an editable Tempo BPM and read-only TAP TIME / TAP TIME SUBDIVISION in ms; which value TAPTIME carries, and its scaling, is not printed."
+  },
+  {
+   "name": "TAPENG",
+   "cc": 28,
+   "label_en": "Works on (tap engine)",
+   "label_fr": "Moteur (Tap)",
+   "labels": null,
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "meaning",
+   "cite": [
+    "M2K-CC p.1: 'TAPENG 28'",
+    "M2K-EN p.20: 'Which engine to work on'",
+    "M2K-EN p.20 LCD (image): 'Works on : ENG1+2'"
+   ],
+   "note": "Only the value ENG1+2 is shown; the value list is not printed."
+  },
+  {
+   "name": "TAPSUB",
+   "cc": 29,
+   "label_en": "Subdivision",
+   "label_fr": "Subdivision",
+   "labels": [
+    "1",
+    "1/2",
+    "1/4",
+    "1/4T",
+    "1/8",
+    "1/8T",
+    "1/16",
+    "1/16T",
+    "1/32",
+    "1/32T"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "confirmed",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'TAPSUB 29'",
+    "M2K-EN p.20: '1,1/2,1/4,1/4T,1/8,1/8T,1/16,1/16T,1/32,1/32T (T for triplets).'",
+    "M2K-FR p.20: '1,1/2,1/4,1/4T,1/8,1/8T,1/16,1/16T,1/32,1/32T (T pour triolets).'",
+    "M2K-EN p.20 LCD (image): 'Subdivision : 1/8'"
+   ],
+   "note": "Printed value list in musical order; CC value to index scaling not printed."
+  },
+  {
+   "name": "PROINPUT",
+   "cc": 30,
+   "label_en": "Input sensitivity (Consumer / Professional)",
+   "label_fr": "Sensibilité d’entrée (grand public / professionnel)",
+   "labels": [
+    "Consumer",
+    "Professional"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'PROINPUT 30'",
+    "M2K-EN p.15: 'Input gain', '(Consumer/PRO)'",
+    "M2K-EN p.15 LCD (image): 'INPUT:' 'CON: -10dBu'"
+   ],
+   "note": "Values printed as a slash pair and the LCD shows only CON; index order not printed. Selects the analog input range (ALIN/ARIN)."
+  },
+  {
+   "name": "PROOUTPUT",
+   "cc": 31,
+   "label_en": "Output level range (Consumer / Professional)",
+   "label_fr": "Niveau de sortie (grand public / professionnel)",
+   "labels": [
+    "Consumer",
+    "Professional"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "unknown",
+   "pairing": "abbreviation",
+   "cite": [
+    "M2K-CC p.1: 'PROOUTPUT 31'",
+    "M2K-EN p.15: 'Output gain', '(Consumer/PRO)'",
+    "M2K-EN p.15 LCD (image): 'OUTPUT:' 'PRO: +6dBu'"
+   ],
+   "note": "Values printed as a slash pair and the LCD shows only PRO; index order not printed. Selects the analog output range (ALOUT/AROUT)."
+  },
+  {
+   "name": "ROUTING",
+   "cc": 35,
+   "label_en": "Routing",
+   "label_fr": "Routing",
+   "labels": [
+    "SERIAL",
+    "PARALLEL",
+    "DUALINPUT",
+    "DUALMONO",
+    "STEREO",
+    "PRE-GLIDE"
+   ],
+   "min": null,
+   "max": null,
+   "unit": null,
+   "status": "confirmed",
+   "pairing": "name",
+   "cite": [
+    "M2K-CC p.1: 'ROUTING 35'",
+    "M2K-EN p.16: 'choose one of six different Routings.'",
+    "M2K-EN p.16 LCD (image): 'ROUTING' numbered list '1 SERIAL' ... '6 PRE-GLIDE'",
+    "M2K-FR p.16 LCD (image): same numbered list"
+   ],
+   "note": "LCD numbers 1-6 (see routings[]); index = number - 1 is an inference; CC value to index scaling not printed. CC numbers 32-34 are not listed."
+  }
+ ],
+ "unknowns": [
+  "No M2000 SysEx specification is published (only the CC guide was listed by TC): model byte, message set, request/dump formats and checksum are unknown. The manual shows a Sys-ex id parameter (p.18), SysEx transmitted/recognized (chart p.33) and a 'Mem > Midi' bulk dump of all RAM presets (p.19).",
+  "Edit-page order of every algorithm, hence the parameter behind CC 12, 13, ...: never printed. The only Edit LCD (p.22, ROOM) contradicts the printed parameter list of the Reverb page.",
+  "Whether the Reverb 'Expert mode' action line and the LEVELS subtitle consume CC numbers.",
+  "Expert-mode CC layout ('the parameter/CC range is different if a preset is set into Expert mode').",
+  "Range, unit and step of most parameters; how 0-127 is scaled and rounded to each range.",
+  "Whether HALL/ROOM/PLATE/AMBIENCE/GATED are distinct algorithms, and which reverb parameters exist for which preset or type (EN: depends on the preset; FR: depends on the mode).",
+  "Whether COMPRESSOR/LIMITER/GATE/DE'ESSER are four algorithms or one, and which of the nine Dynamic parameters each uses.",
+  "Panner: named as a Tap target (p.20) and in preset names 122-124 (p.36) without a program page.",
+  "Value lists of Room shape, Difusor type, Band width (EQ), Phase, Voice numbering; CC value-to-label order of every enumeration.",
+  "Program Change mapping to ROM/RAM and to Combined presets beyond the MIDI Map description (p.19); no CC 0/32 bank select (KB-M2K-BANK).",
+  "Whether panel edits transmit CCs for every parameter, and echo behaviour when a host sends the same CC back.",
+  "Meaning of system CCs STMODE (12), DOUT (20), TAPTIME (27), TAPENG (28) values; Dither range (conflict).",
+  "Which M2000 reverb type, if any, is the 'Rev2' or 'Rev3' of TC's comparison sheet."
+ ],
+ "notes": [
+  "printedPageOffset = PDF page - printed page. M2K-EN, M2K-FR and M2K-CC: 0 (printed page n = PDF page n; measured by research/page_offsets.py on the folios); M3K-EN: 2. Every citation uses printed pages. TC-REVCMP and the KB pages have no folios.",
+  "status: 'confirmed' = the manual prints, for this very parameter, the full range (min and max; unit when one is printed, otherwise unit = null, e.g. Pitch 0-1200) or the full label list in an order; 'unknown' = not printed or only partly printed (the printed parts are kept in min/max/unit/unitHint/lcdExample and the note says what is missing); 'conflict' = two M2000 readings disagree (EN vs FR, text vs LCD), all readings are in 'readings' and in the note.",
+  "step is null everywhere: no M2000 resolution is printed. An editor must then edit the 0-127 CC value directly and may show the printed endpoints only.",
+  "editIndex is null everywhere: the manual never shows a complete Edit page (see unknowns). descriptionIndex (added field) is the 0-based position in the printed USER (or EXPERT) PARAMETERS list of the program page, Mix and Out Level excluded; it is NOT evidence of the Edit-page order (contradicted on p.22 for the Reverb) and must not be used as CC = 12 + descriptionIndex without a hardware observation.",
+  "Added fields: algorithm.expertModeEvidence, algorithm.variants/variantsCite, algorithm.notes; param.descriptionIndex, param.layer (user|expert), param.kind (value|action), param.unitHint (unit seen only in an LCD example), param.lcdExample, param.valueCount (number of values printed without labels), param.labelComposed (label built from a collective description), param.readings (conflicts); mix/outLevel.minLabel (printed lower end that is not a number); system[].pairing (how the M2K-CC name was paired with a manual field: name, abbreviation, meaning, none), system[].rangesByMode, system[].readings, system[].lcdExample, system[].unitHint; cc.* text fields; routingsOrderEvidence, routings[].lcdNumber/lcd.",
+  "mix = null means the program page lists no Mix (EQ, Dynamic).",
+  "Speed ranges are printed as sweeps per second ('1 sweep every 10 seconds to 10 sweeps every second') and stored as 0.1-10 Hz.",
+  "Cites: '<source> p.<printed page>: ' followed by verbatim fragments between straight single quotes; '(image)' marks a reading of an LCD screen or diagram (no text layer). research/check_m2000_data.py re-finds every non-image fragment in the text layer of the cited page.",
+  "Documentation only. Nothing in this file authorises MIDI transmission."
+ ],
+ "readingTrace": {
+  "reader": "Claude sub-agent, single reader",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "note": "Extracted from the manufacturer documents listed in docs/instruments/TC-M-SERIES.md; the full reading trace stays in the upstream research workspace."
+ }
+}

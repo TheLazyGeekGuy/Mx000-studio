@@ -1,0 +1,30 @@
+{
+  "tc-electronic-m3000-editor": {
+    "manifest": {
+      "id": "tc-electronic-m3000-editor",
+      "modelId": "tc-electronic-m3000",
+      "name": "TC Electronic M3000 / M2000",
+      "version": "0.2.0",
+      "sdkVersion": 1,
+      "stateSchemaVersion": 2,
+      "capabilities": [
+        "parameter-sysex",
+        "offline-editing",
+        "sysex-file-import",
+        "sysex-file-export",
+        "device-selector",
+        "cc-file-export"
+      ]
+    },
+    "presentation": {
+      "manufacturer": "TC Electronic",
+      "model": "M3000 / M2000",
+      "preview": {
+        "src": "/editor-previews/tc-electronic-m3000.svg",
+        "width": 2048,
+        "height": 254,
+        "kind": "reference-aligned"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "mx000-studio",
+  "version": "0.2.0-alpha.1",
+  "private": true,
+  "description": "Offline browser editor for the TC Electronic M3000 and M2000, built on MIDI Studio.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "modules:generate": "node scripts/generate-editor-registrations.mjs",
+    "prebuild": "npm run modules:generate && node scripts/build-tc-m3000-map.mjs --check && node scripts/build-tc-m2000-map.mjs --check && node scripts/generate-tc-m3000-preview.mjs --check",
+    "typecheck": "tsc -b --noEmit",
+    "build": "tsc -b && vite build && node scripts/verify-distribution.mjs dist",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node tests/run.mjs",
+    "leak-gate": "node scripts/leak-gate.mjs",
+    "maps:generate": "node scripts/build-tc-m3000-map.mjs && node scripts/build-tc-m2000-map.mjs && node scripts/generate-tc-m3000-preview.mjs"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "toolcool-range-slider": "4.0.28"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3",
+    "vite": "8.3.4"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheLazyGeekGuy/Mx000-studio.git"
+  },
+  "homepage": "https://thelazygeekguy.github.io/Mx000-studio/",
+  "type": "module"
+}

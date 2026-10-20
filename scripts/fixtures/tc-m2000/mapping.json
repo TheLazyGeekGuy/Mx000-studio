@@ -1,0 +1,56 @@
+{
+ "schema": "tc-m2000-m3000-mapping/1",
+ "pairs": [
+  {
+   "m2000": "fixture-reverb",
+   "m3000Algorithm": 15,
+   "relation": "same-name-only",
+   "params": [
+    {
+     "m2000": "mix",
+     "m3000Id": 0,
+     "conversion": "identity",
+     "status": "confirmed"
+    },
+    {
+     "m2000": "outLevel",
+     "m3000Id": 1,
+     "conversion": "identity",
+     "status": "confirmed"
+    },
+    {
+     "m2000": "decay",
+     "m3000Id": 2,
+     "conversion": "identity",
+     "status": "hypothesis"
+    },
+    {
+     "m2000": "type",
+     "m3000Id": null,
+     "conversion": "none",
+     "status": "none"
+    },
+    {
+     "m2000": "level",
+     "m3000Id": 5,
+     "conversion": "identity",
+     "status": "confirmed"
+    },
+    {
+     "m2000": "absent",
+     "m3000Id": null,
+     "conversion": "none",
+     "status": "none",
+     "reason": "documentary row for a parameter this algorithm does not have"
+    },
+    {
+     "m2000": "diffuse",
+     "m3000Id": 15,
+     "conversion": "identity",
+     "status": "hypothesis",
+     "reason": "fixture: raw value, no printed M2000 scale"
+    }
+   ]
+  }
+ ]
+}

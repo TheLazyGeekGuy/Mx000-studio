@@ -1,0 +1,162 @@
+{
+ "schema": "tc-m2000-parameters/1",
+ "cc": {
+  "engineMix": 10,
+  "engineOutLevel": 11,
+  "firstEditParameter": 12,
+  "scaling": "MIDI CC values are scaled to parameter values.",
+  "defaultChannels": {
+   "engine1": 1,
+   "engine2": 2,
+   "combined": 3
+  }
+ },
+ "routings": [
+  {
+   "index": 0,
+   "label_en": "Serial",
+   "label_fr": "Série"
+  },
+  {
+   "index": 1,
+   "label_en": "Parallel",
+   "label_fr": "Parallèle"
+  }
+ ],
+ "algorithms": [
+  {
+   "key": "fixture-reverb",
+   "name_en": "Fixture Reverb",
+   "category": "reverb",
+   "manualPages": [
+    "fixture"
+   ],
+   "expertModeDiffers": true,
+   "mix": {
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "%",
+    "status": "confirmed"
+   },
+   "outLevel": {
+    "min": -100,
+    "max": 0,
+    "step": 1,
+    "unit": "dB",
+    "status": "confirmed"
+   },
+   "params": [
+    {
+     "key": "decay",
+     "label_en": "Decay",
+     "editIndex": 0,
+     "min": 0.1,
+     "max": 20,
+     "step": 0.1,
+     "unit": "s",
+     "status": "confirmed",
+     "cite": [
+      "fixture"
+     ]
+    },
+    {
+     "key": "type",
+     "label_en": "Type",
+     "editIndex": 1,
+     "labels": [
+      "A",
+      "B",
+      "C"
+     ],
+     "status": "confirmed",
+     "cite": [
+      "fixture"
+     ]
+    },
+    {
+     "key": "diffuse",
+     "label_en": "Diffuse",
+     "editIndex": 2,
+     "min": null,
+     "max": null,
+     "step": null,
+     "status": "unknown"
+    },
+    {
+     "key": "hidden",
+     "label_en": "Hidden",
+     "editIndex": null,
+     "min": 0,
+     "max": 10,
+     "step": 1,
+     "status": "confirmed"
+    },
+    {
+     "key": "level",
+     "label_en": "Level",
+     "editIndex": null,
+     "min": -12,
+     "max": 12,
+     "step": null,
+     "unit": "dB",
+     "status": "confirmed",
+     "cite": [
+      "fixture"
+     ]
+    },
+    {
+     "key": "freq",
+     "label_en": "Freq",
+     "editIndex": null,
+     "min": 20,
+     "max": 20000,
+     "step": null,
+     "unit": "Hz",
+     "status": "confirmed",
+     "cite": [
+      "fixture"
+     ]
+    },
+    {
+     "key": "expert-mode",
+     "label_en": "Expert mode",
+     "kind": "action",
+     "editIndex": null,
+     "status": "unknown"
+    }
+   ]
+  },
+  {
+   "key": "fixture-delay",
+   "name_en": "Fixture Delay",
+   "category": "delay",
+   "mix": {
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "%",
+    "status": "confirmed"
+   },
+   "outLevel": {
+    "min": null,
+    "minLabel": "off",
+    "max": 0,
+    "unit": "dB",
+    "status": "confirmed"
+   },
+   "params": [
+    {
+     "key": "time",
+     "label_en": "Delay",
+     "editIndex": 0,
+     "min": 0,
+     "max": 1000,
+     "step": 1,
+     "unit": "ms",
+     "status": "confirmed"
+    }
+   ]
+  }
+ ]
+}

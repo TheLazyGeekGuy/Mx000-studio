@@ -1,0 +1,18 @@
+/* Shadow-root stylesheet of the device selector (toolcool-range-slider 4.0.28 structure), linked through the
+   library's css-links hook so that no inline style is needed (shipped CSP style-src 'self'). Values come from the
+   host through inherited custom properties (--m3k-*), with local fallbacks. */
+:host{display:block;max-width:100%}
+.range-slider-box{display:flex;position:relative;flex-direction:column;padding:10px 9px}
+.row{width:100%;display:flex;align-items:center}
+.range-slider{position:relative;width:var(--m3k-device-width,100%);height:6px;touch-action:none;max-width:100%;box-sizing:border-box;cursor:pointer}
+.range-slider *{box-sizing:border-box}
+.range-slider.disabled{opacity:.45;cursor:default}
+.container{position:absolute;width:100%;height:100%}
+.panel{position:absolute;z-index:10;width:100%;height:100%;background:var(--m3k-line,#3a403c);border-radius:3px;overflow:hidden}
+/* A device choice is not an amount: no fill between the origin and the pointer. */
+.panel-fill{position:absolute;z-index:10;height:100%;background:transparent}
+.pointer{position:absolute;z-index:20;outline:none;top:50%;transform:translateY(-50%)}
+.pointer.disabled{filter:brightness(.8);cursor:default}
+.pointer-shape{width:22px;height:22px;transform:translateX(-50%);border-radius:4px;background:var(--m3k-surface,#242926);border:2px solid var(--m3k-accent,#e2c341);box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.pointer:focus-visible .pointer-shape{outline:2px solid var(--m3k-accent,#e2c341);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.pointer,.panel-fill{transition:left .15s ease,width .15s ease}}
