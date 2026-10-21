@@ -3,7 +3,7 @@
     "manifest": {
       "id": "tc-electronic-m3000-editor",
       "modelId": "tc-electronic-m3000",
-      "name": "TC Electronic M3000 / M2000",
+      "name": "M3000 / M2000 Editor",
       "version": "0.2.0",
       "sdkVersion": 1,
       "stateSchemaVersion": 2,
@@ -17,8 +17,8 @@
       ]
     },
     "presentation": {
-      "manufacturer": "TC Electronic",
-      "model": "M3000 / M2000",
+      "manufacturer": "M3000 / M2000",
+      "model": "Editor",
       "preview": {
         "src": "/editor-previews/tc-electronic-m3000.svg",
         "width": 2048,

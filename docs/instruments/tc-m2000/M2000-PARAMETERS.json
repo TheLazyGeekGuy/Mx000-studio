@@ -107,6 +107,30 @@
    "role": "manufacturer statement: the M5000 has all M2000 effects"
   },
   {
+   "id": "TC-M2K-PAGE",
+   "file": "docs/instruments/sources/tc-m2000-traces/manufacturer/tcelectronic-m2000-product-page-1996-10-19.html",
+   "sha256": "f1b5b4e66b5f5156cb7bb17c4daffe3536d00d90ff1694b57033a3089b300585",
+   "printedPageOffset": null,
+   "edition": "TC Electronic M2000 product page, archived capture 1996-10-19 (same sentence in the 1999-04-21 capture; ledger tc-m2000-traces/sources.json)",
+   "role": "manufacturer statement: the M2000 reverbs include C.O.R.E."
+  },
+  {
+   "id": "TC-SN-T041",
+   "file": "docs/instruments/sources/tc-m2000-traces/manufacturer/tc-service-note-72010T041-M2000-software-changes-2.06.pdf",
+   "sha256": "3100da3435053e9bcf884c86d45f233b4c6abdfbc09fd079d75723f51cc16d76",
+   "printedPageOffset": 0,
+   "edition": "TC service note 720 10 T041 'Software changes M2000 2.06', 1 page (ledger tc-m2000-traces/sources.json)",
+   "role": "manufacturer statement: the M2000 has Rev-3 presets (preset #1)"
+  },
+  {
+   "id": "MIX-1999",
+   "file": "docs/instruments/sources/tc-m2000-traces/third-party-text/mix-1999-07-01-tc-electronic-m3000-arthur-bloom.html",
+   "sha256": "39df043d087e658d7de9037f651057afc71996b99fb4078a0384a3472f7a00dc",
+   "printedPageOffset": null,
+   "edition": "Mix magazine review of the M3000, Arthur Bloom, 1999-07-01 (third party; ledger tc-m2000-traces/sources.json)",
+   "role": "third-party lead, never protocol authority: says the M3000 C.O.R.E. comes from the M2000"
+  },
+  {
    "id": "FAMILY-COMPATIBILITY",
    "file": "docs/instruments/tc-m3000/FAMILY-COMPATIBILITY.md",
    "sha256": "d4002cd1b97d2ff916efb905c14de2925197f0d08be2e2251b8dcbc884b42751",

@@ -14,8 +14,8 @@ const isRecord=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'
  * part of a new workspace, the M2000 part starting from local defaults). */
 export function validateWorkspace(value:unknown):TcWorkspace{
  if(isRecord(value)&&value.format==='tc-m3000-workspace')return {...defaultWorkspace(),m3000:validateM3000State(value)}
- if(!isRecord(value)||value.format!=='tc-m-series-workspace')throw Error('Espace TC M-series invalide')
- if(value.version!==2)throw Error('Version d’espace TC M-series non prise en charge')
+ if(!isRecord(value)||value.format!=='tc-m-series-workspace')throw Error('Espace M-series invalide')
+ if(value.version!==2)throw Error('Version d’espace M-series non prise en charge')
  if(!DEVICES.includes(value.device as DeviceId))throw Error('Appareil inconnu')
  return {format:'tc-m-series-workspace',version:2,device:value.device as DeviceId,m3000:validateM3000State(value.m3000),m2000:validateM2000State(value.m2000)}
 }

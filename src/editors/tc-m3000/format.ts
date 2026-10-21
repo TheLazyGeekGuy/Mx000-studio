@@ -6,7 +6,11 @@ import type {M3000Display} from './parameter-map'
 export interface Formattable {name:string;min:number|null;max:number|null;display:M3000Display|null}
 type Scale=Record<string,unknown>
 const shortName=(p:Formattable)=>p.name.replace(/^MIDI_/,'').replace(/_/g,' ').toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase())
-export const parameterLabel=(p:Formattable,language='fr')=>(language==='fr'?p.display?.labelFr:null)??p.display?.label??shortName(p)
+/** Display language when a caller passes none: French unless the editor view follows a non-French host language. */
+let displayLanguage='fr'
+export const setDisplayLanguage=(language:string)=>{displayLanguage=language==='fr'?'fr':'en'}
+export const getDisplayLanguage=()=>displayLanguage
+export const parameterLabel=(p:Formattable,language=displayLanguage)=>(language==='fr'?p.display?.labelFr:null)??p.display?.label??shortName(p)
 const confirmed=(p:Formattable):Scale|null=>p.display?.status==='confirmed'?p.display.scale as Scale:null
 const listOf=(s:Scale,language:string)=>(language==='fr'&&Array.isArray(s.labels_fr)?s.labels_fr:s.labels) as unknown[]
 const listBase=(p:Formattable,s:Scale)=>Number.isInteger(s.rawStart)?s.rawStart as number:Number.isInteger(s.first)?s.first as number:(p.min??0)
@@ -26,7 +30,7 @@ const RATIO=/^x\b/i,UNIT:Record<string,string>={degree:'°',octave:'oct'}
 const shownUnit=(unit:string|null|undefined)=>!unit||RATIO.test(unit)?null:UNIT[unit]??unit
 const withUnit=(number:string,unit:string|null|undefined)=>RATIO.test(unit??'')?`×${number}`:shownUnit(unit)===null?number:shownUnit(unit)==='°'?`${number}°`:`${number} ${shownUnit(unit)}`
 /** Human value for the raw SysEx value, or the raw value when the manual mapping is not confirmed. */
-export function formatValue(p:Formattable,raw:number,language='fr'):string{
+export function formatValue(p:Formattable,raw:number,language=displayLanguage):string{
  const s=confirmed(p);if(!s)return `${raw}`
  const unit=shownUnit(p.display?.unit)?` ${shownUnit(p.display?.unit)}`:''
  if(s.kind==='list'&&Array.isArray(s.labels)){const label=listOf(s,language)[raw-listBase(p,s)];return typeof label==='string'?label:`${raw}`}

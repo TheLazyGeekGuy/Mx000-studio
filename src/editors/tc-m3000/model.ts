@@ -1,8 +1,10 @@
 // TC Electronic M3000 — pure state, validation and file conversions. No browser, ports or storage.
 // The documented editing path is per-parameter (M3000 MIDI specification V1.01 p.3, Parameter Data on the
-// edit buffer). Preset Data dumps (p.3) have an unpublished internal layout: they are kept as opaque originals.
+// edit buffer). Preset Data dumps (p.3) are kept byte for byte; their engine blocks are decoded by preset-codec.ts
+// (layout decoded on the owner's unit, not published by TC).
 import {m3000Map,type M3000Param,type M3000Table} from './parameter-map'
-import {parseMessage,parameterData,type PresetKind,type PresetData} from './protocol'
+import {UNIT_RANGES} from './unit-ranges'
+import {DUAL_DATA_BYTES,SINGLE_DATA_BYTES,parseMessage,parameterData,type PresetKind,type PresetData} from './protocol'
 
 export type EngineIndex=0|1
 export interface EngineState {algorithm:number;values:Record<string,number>}
@@ -14,17 +16,48 @@ export interface M3000State {
  /** System ROUTING (identifier 34, range 0–5, p.4). Local value; its labels come from the manual display map. */
  routing:number
  engines:[EngineState,EngineState]
- /** Preset Data frames imported or received, preserved byte for byte (layout undocumented). */
+ /** Dynamic Morphing of a combined preset (system parameters 19–21; combined Preset Data bytes 32, 33, 35, decoded on
+  * the unit 2026-10-20). Manual p.25: OFF / 1-2 / 2-1, SLOW / MED / FAST, threshold; only with Parallel routing. */
+ morph:Morph
+ /** Stored single preset each engine was last loaded from (« Preset du moteur », the unit's engine numbers after a read);
+  * the number stays while the engine is edited, as on the unit's display. Optional. */
+ engineSources?:[number|null,number|null]
+ /** Preset Data frames imported or received, preserved byte for byte. */
  originals:OpaqueDump[]
+ /** Decoded Preset Data the draft was opened from or last read from the unit (optional). The preset codec keeps the
+  * bytes the editor does not model from it when the draft is sent or exported whole. */
+ base?:PresetBase|null
+}
+export interface PresetBase {kind:PresetKind;data:number[]}
+export interface Morph {mode:number;speed:number;threshold:number}
+export const MORPH_RANGES={mode:[0,2],speed:[0,2],threshold:[-40,-6]} as const
+/** The most common factory setting (Morphing off, threshold −6). */
+export const defaultMorph=():Morph=>({mode:0,speed:0,threshold:-6})
+export function validateMorph(value:unknown):Morph{
+ if(value===undefined)return defaultMorph()
+ if(!isRecord(value))throw Error('Morphing invalide')
+ const out={} as Morph
+ for(const k of ['mode','speed','threshold'] as const){const v=value[k],[min,max]=MORPH_RANGES[k];if(!Number.isInteger(v)||(v as number)<min||(v as number)>max)throw Error(`Morphing hors domaine : ${k}`);out[k]=v as number}
+ return out
 }
 /** Every addressable Single (1–1024) and Dual (1–512) location plus the edit buffers: a full backup fits. */
 export const MAX_ORIGINALS=1600
 const ROUTING=m3000Map.system.find(p=>p.name==='MIDI_ROUTING')!
 
 export const algorithmById=(id:number)=>m3000Map.algorithms.find(a=>a.id===id)
-export function tableFor(algorithm:number):M3000Table{
+/** The manufacturer's table (published ranges). */
+export function specTableFor(algorithm:number):M3000Table{
  const a=algorithmById(algorithm);if(!a)throw Error('Algorithme inconnu')
  return m3000Map.tables.find(t=>t.key===a.table)!
+}
+const unitTables=new Map<number,M3000Table>()
+/** The table the editor works with: published ranges narrowed to what the unit accepts where they differ (measured on the
+ * owner's M3000, unit-ranges.ts: Reverb 3 Hi Decay 1–200, VSS Surround Reverb Balance −125…0). */
+export function tableFor(algorithm:number):M3000Table{
+ const spec=specTableFor(algorithm),limits=UNIT_RANGES[algorithm];if(!limits)return spec
+ let t=unitTables.get(algorithm)
+ if(!t){t=Object.freeze({...spec,params:Object.freeze(spec.params.map(p=>limits[p.id]?Object.freeze({...p,min:limits[p.id][0],max:limits[p.id][1]}):p))});unitTables.set(algorithm,t)}
+ return t
 }
 export const paramsFor=(algorithm:number):readonly M3000Param[]=>tableFor(algorithm).params
 /** Local starting value: 0 clamped into the documented range. Not a factory default (none is published). */
@@ -33,7 +66,7 @@ export function initialValues(algorithm:number){return Object.fromEntries(params
 
 export function defaultState():M3000State{
  return {format:'tc-m3000-workspace',version:1,name:'Brouillon local',type:'single',routing:initialValue({min:ROUTING.min!,max:ROUTING.max!}),
-  engines:[{algorithm:15,values:initialValues(15)},{algorithm:18,values:initialValues(18)}],originals:[]}
+  engines:[{algorithm:15,values:initialValues(15)},{algorithm:18,values:initialValues(18)}],morph:defaultMorph(),originals:[]}
 }
 
 const isRecord=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v)&&(Object.getPrototypeOf(v)===Object.prototype||Object.getPrototypeOf(v)===null)
@@ -42,7 +75,10 @@ function validateEngine(value:unknown):EngineState{
  const algorithm=value.algorithm as number,params=paramsFor(algorithm),values:Record<string,number>={}
  const keys=Object.keys(value.values)
  if(keys.length!==params.length||keys.some(k=>!params.some(p=>String(p.id)===k)))throw Error('Paramètres du moteur incohérents avec son algorithme')
- for(const p of params){const v=(value.values as Record<string,unknown>)[String(p.id)];if(!Number.isInteger(v)||(v as number)<p.min||(v as number)>p.max)throw Error(`Valeur hors domaine : ${p.name}`);values[String(p.id)]=v as number}
+ // Published range for validity; a value inside it but outside what the unit accepts is brought into the unit's range
+ // (workspaces saved before the unit ranges were measured stay readable).
+ const spec=specTableFor(algorithm).params
+ for(const p of params){const v=(value.values as Record<string,unknown>)[String(p.id)],sp=spec.find(x=>x.id===p.id)!;if(!Number.isInteger(v)||(v as number)<sp.min||(v as number)>sp.max)throw Error(`Valeur hors domaine : ${p.name}`);values[String(p.id)]=Math.min(p.max,Math.max(p.min,v as number))}
  return {algorithm,values}
 }
 function validateDump(value:unknown):OpaqueDump{
@@ -50,6 +86,16 @@ function validateDump(value:unknown):OpaqueDump{
  const parsed=parseMessage(value.bytes as number[])
  if(!parsed||parsed.type!=='preset-data')throw Error('Dump Preset Data M3000 invalide')
  return {kind:parsed.kind,preset:parsed.preset,bytes:Array.from(parsed.raw),checksumDecoded:parsed.checksum.decodedSumMatches}
+}
+function validateBase(value:unknown):PresetBase|null{
+ if(value===undefined||value===null)return null
+ if(!isRecord(value)||![0,2].includes(value.kind as number)||!Array.isArray(value.data))throw Error('Preset de base invalide')
+ const data=value.data as unknown[];if(data.length!==(value.kind===2?DUAL_DATA_BYTES:SINGLE_DATA_BYTES)||data.some(v=>!Number.isInteger(v)||(v as number)<0||(v as number)>255))throw Error('Preset de base invalide')
+ return {kind:value.kind as PresetKind,data:data as number[]}
+}
+function validateSources(value:unknown):[number|null,number|null]{
+ if(!Array.isArray(value)||value.length!==2||value.some(v=>v!==null&&(!Number.isInteger(v)||(v as number)<1||(v as number)>768)))throw Error('Presets des moteurs invalides')
+ return [value[0] as number|null,value[1] as number|null]
 }
 export function validateState(value:unknown):M3000State{
  if(!isRecord(value)||value.format!=='tc-m3000-workspace')throw Error('Espace M3000 invalide')
@@ -61,13 +107,14 @@ export function validateState(value:unknown):M3000State{
  if(!Array.isArray(value.engines)||value.engines.length!==2)throw Error('Deux moteurs requis')
  if(!Array.isArray(value.originals)||value.originals.length>MAX_ORIGINALS)throw Error('Originaux invalides')
  return {format:'tc-m3000-workspace',version:1,name:value.name,type:value.type,routing:value.routing as number,
-  engines:[validateEngine(value.engines[0]),validateEngine(value.engines[1])],originals:value.originals.map(validateDump)}
+  engines:[validateEngine(value.engines[0]),validateEngine(value.engines[1])],morph:validateMorph(value.morph),originals:value.originals.map(validateDump),...(value.engineSources!==undefined?{engineSources:validateSources(value.engineSources)}:{}),...(value.base?{base:validateBase(value.base)}:{})}
 }
 
 export function setParameter(state:M3000State,engine:EngineIndex,id:number,value:number):M3000State{
  const p=paramsFor(state.engines[engine].algorithm).find(p=>p.id===id)
  if(!p)throw Error('Paramètre absent de cet algorithme')
- if(!Number.isInteger(value)||value<p.min||value>p.max)throw Error('Valeur hors du domaine du paramètre')
+ if(!Number.isInteger(value)||value<p.min||value>p.max){const sp=specTableFor(state.engines[engine].algorithm).params.find(x=>x.id===id)!
+  throw Error(Number.isInteger(value)&&value>=sp.min&&value<=sp.max?`Valeur refusée par l’appareil : ${p.name} accepte ${p.min}…${p.max} (la spécification annonce ${sp.min}…${sp.max})`:'Valeur hors du domaine du paramètre')}
  const engines=[...state.engines] as M3000State['engines'];engines[engine]={...engines[engine],values:{...engines[engine].values,[String(id)]:value}}
  return {...state,engines}
 }

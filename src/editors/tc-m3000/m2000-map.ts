@@ -11,8 +11,8 @@ const deepFreeze=<T>(value:T):T=>{if(value&&typeof value==='object'){Object.valu
 export const m2000Map=deepFreeze({
  "source": {
   "document": "TC Electronic M2000 manuals and MIDI CC guide",
-  "dataSha256": "993c4559536b7842e4f60e3727dd87da8e5ef5909a69dcbc4ef78275456501be",
-  "mappingSha256": "bf66cdb941fcf01ce0bdedf9f42b121a3ab380ae1771eac4f99adc50efecf303"
+  "dataSha256": "c0c56d19045790b9cf84f1bf0fd1e126b2f39a52c76ff94c5e0c4767b4eed619",
+  "mappingSha256": "41d32a90ccdfd3720437e4a710a4f1b74ec44b468e4ff78daf88117df6e6db4e"
  },
  "cc": {
   "engineMix": 10,
@@ -4243,6 +4243,7 @@ export const m2000Map=deepFreeze({
     "relationCite": [
      "KB-M2K-VSS3: 'M2000 holds reverb algorithms from the M5000.'",
      "M3K-EN p.46: 'Reverb 3 is a well known TC algorithm from the M5000, and'",
+     "TC-SN-T041 p.1: 'When a Rev-3 preset is selected (e.g. #1)'",
      "TC-REVCMP p.1: row 'Reverb Algorithms', M3000 column 'VSS3, Rev2, Rev3', M2000 column 'Rev2, Rev3'",
      "KB-M2K-M3K-PRESETS: 'The M3000 uses other and more sophisticated reverb algorithms then the M2000.', 'They are simply not inter-compatible.'",
      "M2K-EN p.24: 'HALL-ROOM-PLATE-AMBIENCE-GATED' (the M2000 manual itself never names a Rev 2 or Rev 3 algorithm)",
@@ -4494,10 +4495,12 @@ export const m2000Map=deepFreeze({
    {
     "m2000": "reverb",
     "m3000Algorithm": 4,
-    "relation": "similar-function",
+    "relation": "documented-derived",
     "relationCite": [
      "KB-M2K-VSS3: 'M2000 holds reverb algorithms from the M5000.'",
+     "TC-M2K-PAGE: 'Among the reverbs is the unique Co-efficient Optimized Room Emulator'",
      "M3K-EN p.45: 'The C.O.R.E. algorithm is a well-known TC Reverb from the', 'M5000, and is very good on short to medium decay times.'",
+     "MIX-1999: 'algorithm from the M2000' (third-party lead: the M3000 C.O.R.E. described as coming from the M2000)",
      "TC-REVCMP p.1: row 'Reverb Algorithms', M3000 column 'VSS3, Rev2, Rev3', M2000 column 'Rev2, Rev3' (C.O.R.E. is not named on the sheet)",
      "KB-M2K-M3K-PRESETS: 'The M3000 uses other and more sophisticated reverb algorithms then the M2000.', 'They are simply not inter-compatible.'",
      "M2K-EN p.36: 'The CORE Room' (preset name only)",

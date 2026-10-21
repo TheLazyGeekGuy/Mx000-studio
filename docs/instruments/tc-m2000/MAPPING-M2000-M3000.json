@@ -1813,6 +1813,7 @@
    "relationCite": [
     "KB-M2K-VSS3: 'M2000 holds reverb algorithms from the M5000.'",
     "M3K-EN p.46: 'Reverb 3 is a well known TC algorithm from the M5000, and'",
+    "TC-SN-T041 p.1: 'When a Rev-3 preset is selected (e.g. #1)'",
     "TC-REVCMP p.1: row 'Reverb Algorithms', M3000 column 'VSS3, Rev2, Rev3', M2000 column 'Rev2, Rev3'",
     "KB-M2K-M3K-PRESETS: 'The M3000 uses other and more sophisticated reverb algorithms then the M2000.', 'They are simply not inter-compatible.'",
     "M2K-EN p.24: 'HALL-ROOM-PLATE-AMBIENCE-GATED' (the M2000 manual itself never names a Rev 2 or Rev 3 algorithm)",
@@ -2152,10 +2153,12 @@
   {
    "m2000": "reverb",
    "m3000Algorithm": 4,
-   "relation": "similar-function",
+   "relation": "documented-derived",
    "relationCite": [
     "KB-M2K-VSS3: 'M2000 holds reverb algorithms from the M5000.'",
+    "TC-M2K-PAGE: 'Among the reverbs is the unique Co-efficient Optimized Room Emulator'",
     "M3K-EN p.45: 'The C.O.R.E. algorithm is a well-known TC Reverb from the', 'M5000, and is very good on short to medium decay times.'",
+    "MIX-1999: 'algorithm from the M2000' (third-party lead: the M3000 C.O.R.E. described as coming from the M2000)",
     "TC-REVCMP p.1: row 'Reverb Algorithms', M3000 column 'VSS3, Rev2, Rev3', M2000 column 'Rev2, Rev3' (C.O.R.E. is not named on the sheet)",
     "KB-M2K-M3K-PRESETS: 'The M3000 uses other and more sophisticated reverb algorithms then the M2000.', 'They are simply not inter-compatible.'",
     "M2K-EN p.36: 'The CORE Room' (preset name only)",
@@ -2488,7 +2491,7 @@
      "m3000DisplayStatus": null
     }
    ],
-   "note": "Both the M2000 reverbs (KB-M2K-VSS3) and C.O.R.E. (M3K-EN p.45) come from the M5000, but no source ties any M2000 reverb to C.O.R.E. (only a preset is called 'The CORE Room'), hence not 'documented-derived'. C.O.R.E. matches by name the M2000 expert parameters that Rev-3 lacks (room shape, size, early/reverb levels, width, build-up, Rev diff). Contradiction X1 (FAMILY-COMPATIBILITY §7), both readings kept: TC-REVCMP gives the M3000 'VSS3, Rev2, Rev3' while the M3000's own documents (M3K-EN p.5, M3K-SYX p.5) list VSS3, VSS Gate, VSS-FP, VSS-SR, C.O.R.E. and Rev 3, with no 'Rev 2'; whether the sheet's 'Rev2' designates C.O.R.E. is unknown.",
+   "note": "TC's own M2000 product page names C.O.R.E. among the M2000 reverbs (TC-M2K-PAGE, 1996 and 1999 captures) and the M3000 manual says its C.O.R.E. comes from the M5000 (M3K-EN p.45); two 1999 third-party texts say the M3000 C.O.R.E. comes from the M2000 (MIX-1999; Sweetwater Sweet Notes, tc-m2000-traces). Hence 'documented-derived' (common lineage), not identity: ranges differ from the M5000 REVCORE-1 on 5 rows (research/LINEAGE-M5000.md) and which M2000 presets run C.O.R.E. is not documented. C.O.R.E. matches by name the M2000 expert parameters that Rev-3 lacks (room shape, size, early/reverb levels, width, build-up, Rev diff). Contradiction X1 (FAMILY-COMPATIBILITY §7), both readings kept: TC-REVCMP gives the M3000 'VSS3, Rev2, Rev3' while the M3000's own documents (M3K-EN p.5, M3K-SYX p.5) list VSS3, VSS Gate, VSS-FP, VSS-SR, C.O.R.E. and Rev 3, with no 'Rev 2'; whether the sheet's 'Rev2' designates C.O.R.E. is unknown.",
    "m3000Name": "Core Reverb",
    "m3000Unmapped": [
     6

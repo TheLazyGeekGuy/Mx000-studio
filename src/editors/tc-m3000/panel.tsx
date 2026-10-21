@@ -1,7 +1,9 @@
 import {useEffect,useRef,type KeyboardEvent,type PointerEvent} from 'react'
 import {adjust,blackWindow,cardSlot,chassis,cursorLegend,earSlots,headerY,headers,indicatorX,indicators,keys,lcd,meterColumns,meterRows,meterScale,okBadge,panelSize,sectionRulesX,type PanelKey} from './panel-geometry'
 
-export interface LcdEngineLine {engine:1|2;type:string;parameter:string;value:string;name:string;inactive?:boolean}
+export interface LcdEngineLine {engine:1|2;type:string;parameter:string;value:string;name:string;inactive?:boolean;
+ /** Preset number shown large on the right, as on the unit (running preset read from the hardware). */
+ number?:string}
 export interface PanelProps {
  /** Keys whose LED is lit by the editor (editor state, not hardware feedback). */
  litKeys:ReadonlySet<string>
@@ -34,11 +36,11 @@ export function M3000Panel({litKeys,actions,lcdLines,onKey,onAdjust,adjustLabel,
  const move=(e:PointerEvent<SVGGElement>)=>{const d=drag.current;if(!d)return;const steps=Math.trunc((d.y-e.clientY)/6);if(steps!==d.sent){onAdjust(steps-d.sent);d.sent=steps}}
  const up=(e:PointerEvent<SVGGElement>)=>{drag.current=null;if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId)}
  const [lx,ly,lw,lh]=lcd
- return <svg className={`m3k-panel${m2000?' m3k-skin-m2000':''}`} viewBox={`0 0 ${panelSize.width} ${panelSize.height}`} role="group" aria-label={`Façade TC Electronic ${name} (reconstruction)`} data-model={model}>
+ return <svg className={`m3k-panel${m2000?' m3k-skin-m2000':''}`} viewBox={`0 0 ${panelSize.width} ${panelSize.height}`} role="group" aria-label={`Façade ${name} (reconstruction)`} data-model={model}>
   <rect className="m3k-plate" x={chassis[0]} y={chassis[1]} width={chassis[2]} height={chassis[3]} rx="3"/>
   <line className="m3k-ear-seam" x1="138" y1={chassis[1]} x2="138" y2={chassis[1]+chassis[3]}/><line className="m3k-ear-seam" x1="1911" y1={chassis[1]} x2="1911" y2={chassis[1]+chassis[3]}/>
   {earSlots.map(([x,y,w,h],i)=><rect key={i} className="m3k-slot" x={x} y={y} width={w} height={h} rx={h/2}/>)}
-  <text className="m3k-logo" x="188" y="138">t.c. electronic</text><line className="m3k-rule" x1="314.5" y1="103" x2="314.5" y2="140"/>
+  
   <text className="m3k-model" x="324" y="132">{name}</text><text className="m3k-model-sub" x="323" y="139">{m2000?'STUDIO EFFECTS PROCESSOR':'STUDIO REVERB PROCESSOR'}</text>
   <rect className="m3k-card" x={cardSlot[0]} y={cardSlot[1]} width={cardSlot[2]} height={cardSlot[3]}/>
   <rect className="m3k-window" x={blackWindow[0]} y={blackWindow[1]} width={blackWindow[2]} height={blackWindow[3]} rx="2"/>
@@ -52,7 +54,8 @@ export function M3000Panel({litKeys,actions,lcdLines,onKey,onAdjust,adjustLabel,
     <rect className="m3k-lcd-ink" x={lx+3} y={y} width="11" height="24"/><text className="m3k-lcd-num" x={lx+8.5} y={y+17}>{line.engine}</text>
     <text className="m3k-lcd-small" x={lx+18} y={y+7}>TYPE</text><text className="m3k-lcd-big" x={lx+18} y={y+23}>{line.type.slice(0,12)}</text>
     <text className="m3k-lcd-small" x={lx+150} y={y+7}>{line.parameter.slice(0,14)}</text><text className="m3k-lcd-big" x={lx+150} y={y+23}>{line.value.slice(0,10)}</text>
-    <text className="m3k-lcd-name" x={lx+18} y={y+46}>{line.name.slice(0,20)}</text></g>})}
+    <text className="m3k-lcd-name" x={lx+18} y={y+46}>{line.name.slice(0,line.number?16:20)}</text>
+    {line.number&&<text className="m3k-lcd-number" x={lx+lw-6} y={y+44}>{line.number}</text>}</g>})}
   </g>
   {headers.map(h=><g key={h.id}><rect className="m3k-header" x={h.x0} y={headerY[0]} width={h.x1-h.x0} height={headerY[1]-headerY[0]}/>{m2000&&<line className="m3k-header-rule" x1={h.x0+3} y1={headerY[1]+1} x2={h.x1-6} y2={headerY[1]+1}/>}<text className="m3k-header-text" x={h.x0+4} y={headerY[1]-3}>{h.text}</text>{h.extra&&<text className="m3k-header-text m3k-small" x={h.x1-4} y={headerY[1]-3} textAnchor="end">{h.extra}</text>}</g>)}
   {sectionRulesX.map(x=><line key={x} className="m3k-rule m3k-section-rule" x1={x} y1={headerY[0]} x2={x} y2="196"/>)}

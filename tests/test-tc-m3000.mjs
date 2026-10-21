@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url'
 import path from 'node:path'
 
 execFileSync(process.execPath,['scripts/build-tc-m3000-map.mjs','--check'],{stdio:'pipe'})
-const bundle=await build({stdin:{contents:`export * from './src/editors/tc-m3000/module';export * from './src/editors/tc-m3000/model';export * from './src/editors/tc-m3000/protocol';export {m3000Map} from './src/editors/tc-m3000/parameter-map';export * from './src/editors/tc-m3000/format';export {validateInstrumentDefinition} from './src/instrument-sdk/contracts';`,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',metafile:true})
+const bundle=await build({stdin:{contents:`export * from './src/editors/tc-m3000/module';export * from './src/editors/tc-m3000/model';export * from './src/editors/tc-m3000/protocol';export {m3000Map} from './src/editors/tc-m3000/parameter-map';export * from './src/editors/tc-m3000/format';export * from './src/editors/tc-m3000/preset-codec';export {ENGINE_LAYOUT,ENGINE_TEMPLATE} from './src/editors/tc-m3000/engine-layout';export {validateInstrumentDefinition} from './src/instrument-sdk/contracts';`,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',metafile:true})
 assert.ok(!Object.keys(bundle.metafile.inputs).some(p=>p.endsWith('.tsx')||p.includes('/view')||p.includes('node_modules')),'Headless module imported a view or dependency')
 mkdirSync('output/test-tc-m3000',{recursive:true});writeFileSync('output/test-tc-m3000/core.mjs',bundle.outputFiles[0].text)
 const m=await import(pathToFileURL(path.resolve('output/test-tc-m3000/core.mjs')).href)
@@ -29,7 +29,7 @@ assert.equal(m.formatValue(loDamp,-36),'-18,0 dB');const loDecay=param(15,8);ass
 for(const t of m.m3000Map.tables){const labels=t.params.map(p=>m.parameterLabel(p));assert.equal(new Set(labels).size,labels.length,`Distinct labels in ${t.heading}`)}
 assert.equal(m.parseEntry(loDamp,'-0,5'),-1)
 assert.equal(m.formatValue(roomType,1),'Natural');assert.equal(m.parseEntry(roomType,'natural'),1);assert.ok(m.orderPresumed(roomType),'Range-slot label order is flagged as presumed')
-assert.ok(m.hasConfirmedDisplay(order)&&!m.orderPresumed(order),'Printed ascending list is confirmed');assert.ok(m.orderPresumed(routing),'Routing offset is inferred')
+assert.ok(m.hasConfirmedDisplay(order)&&!m.orderPresumed(order),'Printed ascending list is confirmed');assert.ok(!m.orderPresumed(routing)&&m.hasConfirmedDisplay(routing),'Routing order confirmed on hardware (2026-10-20)');assert.equal(m.formatValue(routing,4),'Couplé (Linked)')
 assert.ok(!m.hasConfirmedDisplay(loFreq)&&m.anchorHint(loFreq),'Endpoint-only table never interpolates');assert.equal(m.formatValue(loFreq,1),'1')
 assert.equal(pitch.display.status,'conflict');assert.equal(m.formatValue(pitch,-1200),'-1200','Conflicting mapping stays raw')
 for(const t of m.m3000Map.tables){const ids=t.params.map(p=>p.id).sort((a,b)=>a-b),grouped=(t.groups??[]).flatMap(g=>g.params).sort((a,b)=>a-b);assert.deepEqual(grouped,ids,`Groups of ${t.heading} cover each parameter once`)}
@@ -54,12 +54,26 @@ assert.equal(m.parseMessage(presetFrame(0,513,80,0,true)).checksum.decodedSumMat
 assert.equal(m.parseMessage(dual).data.length,142)
 for(const bad of [single.slice(1),Uint8Array.from(single).map((v,i)=>i===5?0x40:v),Uint8Array.from(single).map((v,i)=>i===20?16:v),presetFrame(0,1100,80),Uint8Array.from([...single.slice(0,-1),0,0xf7])])assert.equal(m.parseMessage(bad)?.type==='preset-data',false)
 
-// Validators: documented reads only; edit-buffer writes = one known engine parameter within range.
-assert.ok(m.acceptsQuery([...m.presetRequest(5,1,0)]));assert.ok(m.acceptsQuery([...m.parameterRequest(5,2,0,34)]))
-for(const refused of [[0xf0,0,0x20,0x1f,0,0x42,0x40,0,0xf7],[0xf0,0,0x20,0x1f,0,0x42,0x44,0,0,1,0xf7],[...m.parameterData(0,0,0,[50])],[...single],[0xf0,0,0x20,0x1f,0,0x40,0x45,0,0,0,0xf7]])assert.equal(m.acceptsQuery(refused),false)
-assert.ok(m.acceptsEditBuffer([...m.parameterData(0,0,0,[50])]))
-assert.ok(m.acceptsEditBuffer([...m.parameterData(0,1,1,[-100])]))
-for(const refused of [[...m.parameterData(0,2,34,[1])],[...m.parameterData(0,0,0,[50,0])],[...m.parameterData(0,0,0,[101])],[...m.parameterData(0,0,99,[0])],[...single],[...m.presetRequest(0,0,0)]])assert.equal(m.acceptsEditBuffer(refused),false)
+// Validators: reads = Identity, Preset, Parameter and Bank Requests; edit buffer = one known engine value or a Recall.
+assert.ok(m.acceptsQuery([...m.presetRequest(5,1,0)]));assert.ok(m.acceptsQuery([...m.parameterRequest(5,2,0,34)]));assert.ok(m.acceptsQuery([...m.IDENTITY_REQUEST]));assert.ok(m.acceptsQuery([...m.bankRequest(0,2)]))
+for(const refused of [[0xf0,0,0x20,0x1f,0,0x42,0x44,0,0,1,0xf7],[...m.parameterData(0,0,0,[50])],[...single],[0xf0,0,0x20,0x1f,0,0x40,0x45,0,0,0,0xf7],[0xf0,0x7e,0x7f,0x06,0x02,0xf7]])assert.equal(m.acceptsQuery(refused),false)
+assert.ok(m.acceptsEditBuffer([...m.parameterData(0,0,0,[50])]));assert.ok(m.acceptsEditBuffer([...m.parameterData(0,1,1,[-100])]))
+assert.equal(hex(m.recallRequest(0,2,89)),'F0 00 20 1F 00 42 44 02 00 59 F7');assert.ok(m.acceptsEditBuffer([...m.recallRequest(0,2,89)]));assert.ok(m.acceptsEditBuffer([...m.recallRequest(0,0,500)]))
+assert.throws(()=>m.recallRequest(0,0,0),/buffer/);assert.equal(m.acceptsEditBuffer([0xf0,0,0x20,0x1f,0,0x42,0x44,2,0x04,1,0xf7]),false,'Recall beyond the dual range refused')
+assert.ok(m.acceptsEditBuffer([...m.parameterData(0,2,34,[1])]),'Routing of the running preset (system 34) admitted');assert.equal(m.acceptsEditBuffer([...m.parameterData(0,2,34,[6])]),false)
+for(const refused of [[...m.parameterData(0,2,33,[1])],[...m.parameterData(0,2,0,[1])],[...m.parameterData(0,0,0,[50,0])],[...m.parameterData(0,0,0,[101])],[...m.parameterData(0,0,99,[0])],[...single],[...m.presetRequest(0,0,0)],[...m.bankRequest(0,0)]])assert.equal(m.acceptsEditBuffer(refused),false)
+
+// Identity Reply as sent by the owner's M3000 (2026-10-20): family 0x42, version 2.04, device ID 0.
+const reply=[0xf0,0x7e,0x00,0x06,0x02,0x00,0x20,0x1f,0x42,0x00,0x00,0x00,0x00,0x00,0x02,0x04,0xf7],ident=m.parseIdentity(reply)
+assert.deepEqual([ident.manufacturer,ident.family,ident.model,ident.version,ident.device],['tc-electronic',0x42,0,'2.04',0]);assert.ok(m.isM3000Identity(ident))
+assert.equal(m.isM3000Identity(m.parseIdentity(reply.map((v,i)=>i===8?0x40:v))),false,'FireworX family is not an M3000');assert.equal(m.parseIdentity(reply.slice(0,-2).concat([0xf7])),null)
+// Dual Preset Data as the unit sends it: 144 data bytes (the specification prints 142); header fields decoded.
+function dualFrame(n,name,a1,a2,s1,s2,routing){const d=new Uint8Array(144);d[0]=(n-1)>>8&255;d[1]=(n-1)&255;[...name.padEnd(20)].forEach((c,i)=>d[2+i]=c.charCodeAt(0));d[23]=a1;d[25]=a2
+ const w16=(i,v)=>{const u=v&0xffff;d[i]=u>>8;d[i+1]=u&255};w16(26,s1);w16(28,s2);d[30]=routing;let sum=0;const wire=[];for(const v of d){wire.push(v>>4,v&15);sum+=v}
+ return Uint8Array.from([0xf0,0,0x20,0x1f,0,0x42,0x20,2,n>>7,n&127,...wire,(-sum)&127,0xf7])}
+const real=m.parseMessage(dualFrame(17,'Linked Delay',18,9,225,-1,4));assert.equal(real.type,'preset-data');assert.equal(real.data.length,144);assert.equal(real.raw.length,300)
+assert.deepEqual(m.decodePresetHeader(2,real.data),{index:16,name:'Linked Delay',algorithms:[18,9],sources:[226,null],routing:4})
+const nul=m.parseMessage(dualFrame(3,'Eq Flat',13,13,-1,-1,0));nul.data.fill(0,9,22);assert.equal(m.decodePresetHeader(2,nul.data).name,'Eq Flat','NUL-padded name')
 
 // Model: strict validation, algorithm change, export ⇄ import round trip, opaque dumps preserved.
 const base=m.defaultState();assert.deepEqual(m.validateState(structuredClone(base)),base)
@@ -85,7 +99,7 @@ const detached=a.serialize();detached.m3000.engines[0].values[String(mixId)]=1;a
 assert.throws(()=>a.dispatch({type:'set-parameter',engine:0,id:mixId,value:9999}));assert.match(a.getSnapshot().lastError,/domaine/)
 a.dispatch({type:'focus',engine:0,id:mixId});assert.deepEqual(a.getSnapshot().selection,{device:'m3000',engine:0,id:mixId})
 a.setLocked(true);assert.throws(()=>a.dispatch({type:'set-name',value:'X'}),/verrouillée/);a.setLocked(false)
-assert.throws(()=>a.setSending(true),/désactivés/);assert.equal(a.getSnapshot().sending,false)
+assert.throws(()=>a.setSending(true),/Autorisation/);assert.throws(()=>a.setSending(true,{operation:'value'}),/edit-buffer/);assert.throws(()=>a.setSending(true,{operation:'edit-buffer'}),/Identifiez/);assert.equal(a.getSnapshot().sending,false)
 a.dispatch({type:'import-sysex',bytes:[...single]});assert.equal(a.lastImport.presetDumps,1);assert.equal(a.serialize().m3000.originals.length,1)
 a.dispatch({type:'remove-original',index:0});assert.equal(a.serialize().m3000.originals.length,0)
 assert.throws(()=>a.dispatch({type:'unknown'}),/non prise en charge/)
@@ -102,4 +116,53 @@ assert.throws(()=>m.importSysex(full.state,[...presetFrame(0,1,80,1),...Array.fr
 assert.ok(m.MAX_ORIGINALS>=1536+3)
 assert.ok(importMs<1000&&validateMs<500&&json.length<4*1024*1024,`Budgets: import ${importMs.toFixed(0)} ms (<1000), validate ${validateMs.toFixed(0)} ms (<500), JSON ${(json.length/1024).toFixed(0)} KiB (<4096)`)
 console.log(`MEASURE full backup 1536 dumps (${(backup.length/1024).toFixed(0)} KiB .syx): import ${importMs.toFixed(1)} ms, validate ${validateMs.toFixed(1)} ms, workspace JSON ${(json.length/1024).toFixed(0)} KiB`)
-console.log('PASS TC M3000 module: 21 algorithms/274 engine rows/34 system rows, confirmed-only display formatting (raw for conflicts/unknowns, no interpolation, presumed orders flagged), exact requests and Parameter Data, signed 14-bit round trip, Preset Data nibble/checksum parsing, read/edit-buffer validators, strict state, export⇄import, opaque dump preservation, full-backup scale (1536 dumps) within budgets, isolated sessions, history, lock, hardware disabled, idempotent disposal, zero MIDI sent')
+// Preset codec (engine layout decoded on the owner's unit, SW 2.04, 2026-10-20; docs/instruments/tc-m3000/ENGINE-LAYOUT.json).
+{
+ const algos=Object.keys(m.ENGINE_LAYOUT).map(Number);assert.equal(algos.length,21,'Every algorithm of the specification');for(const [x,b] of [[100,2],[120,15],[122,16],[126,19]])assert.deepEqual(m.ENGINE_LAYOUT[x],m.ENGINE_LAYOUT[b],'Expert variant = base layout')
+ for(const a of algos){
+  const fields=m.ENGINE_LAYOUT[a],ids=fields.map(f=>f.id).sort((x,y)=>x-y);assert.deepEqual(ids,m.paramsFor(a).map(p=>p.id).sort((x,y)=>x-y),`Layout covers every parameter of algorithm ${a}`)
+  const bytes=new Set();for(const f of fields)for(let k=0;k<(f.encoding.endsWith('16')?2:1);k++){const i=f.offset+k;assert.ok(i>=26&&i<=79&&!bytes.has(i),`No overlap, inside the block (algorithm ${a})`);bytes.add(i)}
+  for(const f of fields){const p=m.paramsFor(a).find(p=>p.id===f.id);if(f.encoding.endsWith('8')){assert.equal(f.encoding,p.min<0?'s8':'u8');assert.ok(p.max<=(p.min<0?127:255)&&p.min>=-128,'A byte holds the whole range')}else assert.equal(f.encoding,p.min<0?'s16':'u16')}
+  assert.equal(m.ENGINE_TEMPLATE[a].length,54)
+ }
+ let seed=7;const rnd=()=>(seed=(seed*1103515245+12345)%2147483648)/2147483648
+ const randomEngine=a=>({algorithm:a,values:Object.fromEntries(m.paramsFor(a).map(p=>[String(p.id),p.min+Math.floor(rnd()*(p.max-p.min+1))]))})
+ assert.deepEqual([4,7,10,13,16].map(id=>m.ENGINE_LAYOUT[13].find(f=>f.id===id)).map(f=>[f.offset,f.encoding]),[[30,'s16'],[34,'s16'],[38,'s16'],[42,'s16'],[46,'s16']],'Parametric EQ gains are signed words')
+ // Round trips: single, combined (both engines), extremes of every range.
+ for(const a of algos){
+  const e=randomEngine(a),single=m.encodeEngine(0,m.blankPreset(0),0,e);assert.deepEqual(m.decodeEngine(0,single,0).engine,e)
+  assert.equal(single[22]<<8|single[23],a);assert.deepEqual([single[24],single[25]],[0,1])
+  for(const end of ['min','max']){const x={algorithm:a,values:Object.fromEntries(m.paramsFor(a).map(p=>[String(p.id),p[end]]))};assert.deepEqual(m.decodeEngine(0,m.encodeEngine(0,m.blankPreset(0),0,x),0).engine,x)}
+  const b=randomEngine(algos[(algos.indexOf(a)+5)%algos.length]),dual=m.encodeEngine(2,m.encodeEngine(2,m.blankPreset(2),0,e),1,b)
+  assert.deepEqual(m.decodeEngine(2,dual,0).engine,e);assert.deepEqual(m.decodeEngine(2,dual,1).engine,b)
+ }
+ // Engine 1 occupies combined bytes 36–89 and engine 2 bytes 90–143: writing one never touches the other.
+ const one=m.encodeEngine(2,m.blankPreset(2),0,randomEngine(15)),two=m.encodeEngine(2,one,1,randomEngine(18))
+ for(let i=0;i<144;i++)if(i<24||(i>=36&&i<90))assert.equal(two[i],one[i],`Engine 2 leaves byte ${i} alone`)
+ // Bytes the editor does not model are kept from the base while the algorithm is unchanged; refilled on a change.
+ const base=m.encodeEngine(0,m.blankPreset(0),0,randomEngine(15));const unowned=Array.from({length:54},(_,k)=>26+k).find(i=>![15,18].some(a=>m.ENGINE_LAYOUT[a].some(f=>i>=f.offset&&i<f.offset+(f.encoding.endsWith('16')?2:1))))
+ base[unowned]=0x5a;assert.equal(m.encodeEngine(0,base,0,randomEngine(15))[unowned],0x5a);assert.equal(m.encodeEngine(0,base,0,randomEngine(18))[unowned],m.ENGINE_TEMPLATE[18][unowned-26])
+ // Out-of-range stored values (seen in factory presets) are clamped and reported; unknown layouts decode to null.
+ const odd=m.encodeEngine(0,m.blankPreset(0),0,randomEngine(15)),hiCross=m.ENGINE_LAYOUT[15].find(f=>f.id===14);odd[hiCross.offset]=129
+ const dec=m.decodeEngine(0,odd,0);assert.deepEqual(dec.clamped.map(c=>[c.id,c.stored,c.value]),[[14,129,136]])
+ const unknown=m.blankPreset(0);unknown[23]=112;assert.equal(m.decodeEngine(0,unknown,0),null);assert.throws(()=>m.encodeEngine(0,unknown,0,{algorithm:112,values:{}}),/disposition/)
+ assert.throws(()=>m.encodeEngine(0,m.blankPreset(0),0,{...randomEngine(15),values:{...randomEngine(15).values,'2':99999}}),/hors domaine/)
+ // Unit ranges (measured on the unit): the editor table narrows the published range; the specification stays available.
+ const revbal=m.paramsFor(19).find(p=>p.id===28),hidecay=m.paramsFor(10).find(p=>p.id===9);assert.deepEqual([revbal.min,revbal.max,hidecay.min,hidecay.max],[-125,0,1,200])
+ assert.deepEqual([m.specTableFor(19).params.find(p=>p.id===28).max,m.paramsFor(126).find(p=>p.id===28).max,m.paramsFor(2).find(p=>p.id===28)?.max],[127,0,m.specTableFor(2).params.find(p=>p.id===28)?.max])
+ {const st=m.setAlgorithm(m.defaultState(),0,19);assert.throws(()=>m.setParameter(st,0,28,50),/refusée par l’appareil.*-125…0.*-127…127/);assert.equal(m.setParameter(st,0,28,-125).engines[0].values['28'],-125)
+  const old={...m.defaultState(),engines:[{algorithm:10,values:{...m.initialValues(10),'9':240}},m.defaultState().engines[1]]};assert.equal(m.validateState(old).engines[0].values['9'],200,'Older workspace value brought into the unit range')}
+ // Whole draft → P0 frame accepted by the edit-buffer validator, not by the store validator.
+ const draft={...m.defaultState(),name:'Codec test',type:'dual',routing:1,engines:[randomEngine(15),randomEngine(18)]},enc=m.encodeDraft(draft)
+ assert.equal(enc.kind,2);assert.equal(enc.data[30],1);const dp=m.decodePreset(2,enc.data);assert.equal(dp.name,'Codec test');assert.deepEqual([dp.engines[0].engine,dp.engines[1].engine],draft.engines)
+ const frame=Array.from(m.presetDataFrame(0,2,0,enc.data));assert.ok(m.acceptsEditBuffer(frame));assert.ok(!m.acceptsPresetStore(frame))
+ // Dynamic Morphing in the combined header: bytes 32 (mode), 33 (speed), 35 (threshold, signed).
+ const morphDraft={...draft,morph:{mode:2,speed:1,threshold:-23}},md=m.encodeDraft(morphDraft).data;assert.deepEqual([md[32],md[33],md[35]],[2,1,233]);assert.deepEqual(m.decodePreset(2,md).morph,{mode:2,speed:1,threshold:-23})
+ assert.deepEqual(m.stateFromPreset(m.defaultState(),2,md).state.morph,{mode:2,speed:1,threshold:-23});assert.deepEqual(m.defaultState().morph,{mode:0,speed:0,threshold:-6})
+ assert.throws(()=>m.validateState({...m.defaultState(),morph:{mode:3,speed:0,threshold:-6}}),/Morphing/);assert.deepEqual(m.validateState((({morph,...rest})=>rest)(m.defaultState())).morph,{mode:0,speed:0,threshold:-6},'Older workspaces get the default')
+ const sys=(id,v)=>Array.from(m.parameterData(0,2,id,[v]))
+ assert.ok(m.acceptsEditBuffer(sys(19,2))&&m.acceptsEditBuffer(sys(20,0))&&m.acceptsEditBuffer(sys(21,-40))&&m.acceptsEditBuffer(sys(34,5)))
+ for(const [id,v] of [[19,3],[21,-5],[22,1],[23,1000],[0,0],[17,1],[35,1]])assert.ok(!m.acceptsEditBuffer(sys(id,v)),`System ${id}=${v} refused`)
+ const sDraft=m.encodeDraft({...draft,type:'single'});assert.equal(sDraft.kind,0);assert.equal(sDraft.data.length,80)
+}
+console.log('PASS TC M3000 module: 21 algorithms/274 engine rows/34 system rows, preset codec (21 algorithms incl. Limiter and Expert, Dynamic Morphing, single + combined round trips, template refill, clamps), confirmed-only display formatting (raw for conflicts/unknowns, no interpolation, presumed orders flagged), exact requests and Parameter Data, signed 14-bit round trip, Preset Data nibble/checksum parsing, read/edit-buffer validators, strict state, export⇄import, opaque dump preservation, full-backup scale (1536 dumps) within budgets, isolated sessions, history, lock, hardware disabled, idempotent disposal, zero MIDI sent')

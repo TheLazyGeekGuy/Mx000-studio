@@ -1,20 +1,20 @@
-# TC Electronic M3000 and M2000 — device notes
+# M3000 and M2000 — device notes
 
 What the editor relies on, with the manufacturer source for each claim. Source identifiers (M3K-SYX, M2K-EN…) refer to
 the ledger at the end; page numbers are the printed ones. Vendor documents are not redistributed here.
 
 ## M3000 (Studio Reverb Processor)
 
-**SysEx frame** (M3K-SYX p.1): `F0 00 20 1F dd 42 tt … F7` — TC manufacturer ID `00 20 1F`, device ID `dd`, model
+**SysEx frame** (M3K-SYX p.1): `F0 00 20 1F dd 42 tt … F7` — manufacturer ID `00 20 1F`, device ID `dd`, model
 `42` (M3000), message type `tt`.
 
 | Type | Message (M3K-SYX pp.2–4) | Used by the editor |
 | --- | --- | --- |
-| `45` | Preset Request | Validator only (hardware disabled) |
-| `20` | Preset Data: 80 (single) or 142 (dual) data bytes sent as nibbles, frames of 172/296 bytes, checksum `(−sum) & 0x7F` | Import: parsed and kept byte for byte; internal layout unpublished, not decoded |
-| `47` | Parameter Request (base ID, count 1–64) | Validator only |
-| `22` | Parameter Data: signed 14-bit values, MSB first, always on the edit buffer | Export: one single-value message per engine parameter; import applies values that fit the current algorithm |
-| `40`, `44` | Bank Request, Recall | Not used |
+| `45` | Preset Request | State and memory reading |
+| `20` | Preset Data: 80 (single) or 142 (dual) data bytes sent as nibbles, frames of 172/296 bytes, checksum `(−sum) & 0x7F` | Decoded and encoded (layout measured on the unit, below); sent whole to the edit buffer; STORE into user slots after confirmation |
+| `47` | Parameter Request (base ID, count 1–64) | Running state (status, routing, engines) |
+| `22` | Parameter Data: signed 14-bit values, MSB first, always on the edit buffer | Live edits and export: one single-value message per engine parameter; import applies values that fit the current algorithm |
+| `40`, `44` | Bank Request, Recall | Combined user bank reading; recall of single and combined presets, and of a single into one engine |
 
 Preset numbers (M3K-SYX p.1; M3K-EN pp.11, 21): single 1–512 factory, 513–768 user, 769–1024 card; dual 1–128 factory, 129–256 user,
 257–384 snapshots, 385–512 card; 0 = edit buffer. Target field 0/1 = engine 1/2, 2 = system.
@@ -25,13 +25,19 @@ parameter is also Control Change `ID + 10` on its engine channel. Display units 
 The editor renders only confirmed linear and list scales; endpoint-only tables show their printed ends and never
 interpolate; lists whose value order is not printed are marked "ordre présumé".
 
-**Unverified until tested on hardware:** device ID default, two's-complement encoding of negative values, which bytes
-the checksum sums, the Preset Data layout. **Not documented:** a message that selects an algorithm — an exported `.syx`
-sets the parameters of the algorithm already running on the unit.
+**Checked on one unit (software 2.04).** The universal Identity Request (`F0 7E 7F 06 01 F7`) answers family `0x42`,
+software version and device ID (default 0). The checksum is `(−sum of the decoded bytes) & 0x7F`. Negative values are
+two's complement on 14 bits. A combined dump carries **144** data bytes (the specification prints 142). Preset Data
+layout, not published, measured on the unit: header (own number, name, algorithms; for a combined preset the source
+singles, routing and Dynamic Morphing mode, speed and threshold), then one 54-byte engine block per engine (single:
+bytes 26–79; combined: +10 and +64); each parameter is one byte or one big-endian word, signed when its range is. The
+unit ignores a Parameter Data value equal to the last one it received for that parameter, and answers no single-preset
+Bank Request. **Not documented:** a message that selects an algorithm; the editor changes an algorithm by sending the
+whole preset to the edit buffer.
 
 ## M2000 (Studio Effects Processor)
 
-TC publishes no SysEx specification for the M2000; its MIDI document is the one-page CC guide (M2K-CC): engine
+The manufacturer publishes no SysEx specification for the M2000; its MIDI document is the one-page CC guide (M2K-CC): engine
 parameters on each engine's channel, **CC 10 = Mix, CC 11 = Out Level, CC 12 = first parameter of the EDIT page,
 13 = second…**, and "MIDI CC values are scaled to parameter values"; system controllers 10–31 and 35 (routing) on the
 Combined channel.
@@ -45,10 +51,10 @@ controllers (routing, inputs, clock…) are never exported.
 
 ## Compatibility between the two, and the family
 
-- **Presets:** TC support states that M2000 presets cannot be transferred to the M3000 (KB-M2K-M3K-PRESETS).
-- **Algorithms:** no TC document states that an M2000 algorithm is identical to an M3000 one. TC support says the
+- **Presets:** the manufacturer's support states that M2000 presets cannot be transferred to the M3000 (KB-M2K-M3K-PRESETS).
+- **Algorithms:** no manufacturer document states that an M2000 algorithm is identical to an M3000 one. Its support says the
   M2000 reverbs come from the M5000 (KB-M2K-VSS3); the M3000 manual says its C.O.R.E. and Reverb 3 algorithms come
-  from the M5000 (M3K-EN pp.45–46). TC's comparison sheet lists "Rev2, Rev3" for the M2000 and "VSS3, Rev2, Rev3" for
+  from the M5000 (M3K-EN pp.45–46). The manufacturer's comparison sheet lists "Rev2, Rev3" for the M2000 and "VSS3, Rev2, Rev3" for
   the M3000 (TC-REVCMP), while the M3000's own documents list no Rev 2. VSS3 is not in the M2000 (KB-M2K-VSS3).
 - **Text overlap:** about a quarter of the wording of the M3000 C.O.R.E. and Reverb 3 parameter descriptions appears
   word for word in the M2000 reverb pages (Room shape, Size, Rev diff on one side; Distance, Diffuser type, Diffuse,
@@ -60,13 +66,11 @@ The candidate correspondences (`docs/instruments/tc-m2000/MAPPING-M2000-M3000.js
 109 hypothesis, 60 without counterpart) drive the editor's "Copier vers…" buttons. Each copy reports confirmed values,
 values read through a scaling hypothesis, values carried by the opt-in same-range assumption, and values not carried.
 
-## What hardware tests would settle
+## Hardware checks still open
 
-In order, each only with the owner of the unit's agreement, stopping at the first unexpected result: note firmware and
-MIDI settings on the front panel; listen passively (no transmission) while turning parameters — on the M2000 this
-reveals each parameter's controller number and scaling; record a "Memory to MIDI" dump; then single read requests
-(`45`, `47`) whose effect is re-read; volatile edit-buffer writes last. STORE, global/system writes and card or bank
-operations stay out.
+The M2000 has not been connected: its controller numbers beyond Mix and Out Level, and its scaling, would be read by
+listening passively while turning parameters on the unit. On the M3000, card memory and units other than one running
+software 2.04 are untested.
 
 ## Sources
 

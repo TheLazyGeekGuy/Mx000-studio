@@ -2,7 +2,7 @@
   "name": "mx000-studio",
   "version": "0.2.0-alpha.1",
   "private": true,
-  "description": "Offline browser editor for the TC Electronic M3000 and M2000, built on MIDI Studio.",
+  "description": "Browser editor for the M3000 and M2000, built on MIDI Studio.",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "modules:generate": "node scripts/generate-editor-registrations.mjs",

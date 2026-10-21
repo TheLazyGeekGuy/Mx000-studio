@@ -82,7 +82,7 @@ s.dispatch({type:'focus',device:'m2000',engine:0,key:'decay'});assert.deepEqual(
 assert.throws(()=>s.dispatch({type:'m2000-set-parameter',engine:0,key:'decay',value:200}),/domaine/);assert.throws(()=>s.dispatch({type:'focus',device:'m2000',engine:0,key:'nope'}),/inconnu/)
 for(let i=0;i<4;i++)s.dispatch({type:'undo'});assert.equal(s.serialize().m2000.engines[0].values.decay,24);s.dispatch({type:'undo'});assert.equal(s.serialize().m2000.engines[0].values.decay,0);s.dispatch({type:'undo'});assert.equal(s.serialize().device,'m3000','Device switch is one undo step')
 assert.throws(()=>s.dispatch({type:'set-device',device:'m5000'}),/inconnu/)
-s.setLocked(true);assert.throws(()=>s.dispatch({type:'set-device',device:'m2000'}),/verrouillée/);s.setLocked(false);assert.throws(()=>s.setSending(true),/désactivés/);s.dispose()
+s.setLocked(true);assert.throws(()=>s.dispatch({type:'set-device',device:'m2000'}),/verrouillée/);s.setLocked(false);assert.throws(()=>s.setSending(true),/Autorisation/);s.dispose()
 
 // ---------- B. Shipped map (docs/instruments/tc-m2000): invariants on the real data ----------
 const r=await load('shipped.mjs',null),map=r.m2000Map

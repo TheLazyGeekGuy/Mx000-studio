@@ -76,6 +76,10 @@ for (const t of tables) {
   for (const p of t.params) if (p.display?.labelFr && count.get(p.display.labelFr) > 1 && p.display.label && p.display.label !== p.display.labelFr) p.display.labelFr = null
 }
 for (const p of system) p.display = displayFor('system', p.id)
+// Value orders confirmed on the owner's unit (hardware session 2026-10-20, read-only requests). Only the order
+// statement changes; labels and the rest of the scale stay those of the manuals.
+const HARDWARE_ORDER = {MIDI_ROUTING: 'LCD numbered 1-6, raw = number - 1: confirmed on hardware 2026-10-20 (system parameter 34 and dual Preset Data byte 30; the 12 factory "Linked ..." combined presets carry 4 = LINKED, "Stereo ..." 2, "Dual Delay" 3)'}
+for (const p of system) if (HARDWARE_ORDER[p.name] && p.display?.scale?.kind === 'list') p.display = {...p.display, scale: {...p.display.scale, indexOrder: HARDWARE_ORDER[p.name]}, cite: [...p.display.cite, 'Hardware session 2026-10-20 (output/research/tc-m3000-hw, outside Git)']}
 
 const data = {
   source: {document: spec.source?.title ?? 'TC Electronic M3000 MIDI specification', edition: spec.source?.edition ?? 'V1.01 1999/08/10 (SW 2.03)',

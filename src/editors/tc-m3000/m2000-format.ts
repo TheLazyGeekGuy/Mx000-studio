@@ -3,11 +3,12 @@
 // units is shown only for a linearly read unit, prefixed "≈" (scaling hypothesis); everything else stays raw.
 import type {M2000Param} from './m2000-map'
 import {nearestCc,shownValue} from './m2000-model'
+import {getDisplayLanguage} from './format'
 
 const UNIT:Readonly<Record<string,string>>={deg:'°',degree:'°',octave:'oct'}
 const rawUnit=(p:M2000Param)=>p.domain.kind==='steps'?p.domain.unit:p.domain.kind==='cc'?p.domain.printed?.unit??null:null
 const unitOf=(p:M2000Param)=>{const u=rawUnit(p);return u?UNIT[u]??u:null}
-export const m2000Label=(p:M2000Param,language='fr')=>(language==='fr'?p.labelFr:null)||p.label
+export const m2000Label=(p:M2000Param,language=getDisplayLanguage())=>(language==='fr'?p.labelFr:null)||p.label
 /** Raw controller value everywhere except possibly at its printed ends. */
 export const isRawCc=(p:M2000Param)=>p.domain.kind==='cc'&&!p.domain.printed?.interpolate
 /** Shown in manual units through the linear scaling hypothesis. */
@@ -17,7 +18,7 @@ const number=(v:number,decimals:number,language:string)=>language==='fr'?v.toLoc
 /** Labels shown but their order (value ↔ label) is not printed as an ordered list or not confirmed. */
 export const m2000OrderPresumed=(p:M2000Param)=>p.domain.kind==='list'&&p.status!=='confirmed'
 
-export function formatM2000(p:M2000Param,step:number,language='fr'):string{
+export function formatM2000(p:M2000Param,step:number,language=getDisplayLanguage()):string{
  const d=p.domain
  if(d.kind==='list')return (language==='fr'&&d.labelsFr?d.labelsFr:d.labels)[step]??`${step}`
  if(d.kind==='steps')return withUnit(number(shownValue(p,step)!.value,d.decimals,language),unitOf(p))

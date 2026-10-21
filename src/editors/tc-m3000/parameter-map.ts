@@ -8583,7 +8583,7 @@ export const m3000Map=deepFreeze({
       "LINKED",
       "PRE-GLIDE"
      ],
-     "indexOrder": "LCD numbered 1-6 (raw = number - 1; the 0-based offset is an inference)",
+     "indexOrder": "LCD numbered 1-6, raw = number - 1: confirmed on hardware 2026-10-20 (system parameter 34 and dual Preset Data byte 30; the 12 factory \"Linked ...\" combined presets carry 4 = LINKED, \"Stereo ...\" 2, \"Dual Delay\" 3)",
      "labels_fr": [
       "Série",
       "Parallèle",
@@ -8599,7 +8599,8 @@ export const m3000Map=deepFreeze({
      "M3K-EN p.18: ROUTING LCD numbered list 1 SERIAL, 2 PARALLEL, 3 DUALINPUT, 4 DUALMONO, 5 LINKED, 6 PRE-GLIDE",
      "M3K-EN p.5: routings Serial, Parallel, Dual Input, Dual Mono, Linked, Pre-Glide",
      "M3K-FR p.18: Mode Série, Mode Parallèle, Mode Double Mono, Mode Couplé",
-     "M3K-FR p.19: Mode Double entrée (Split), Mode Preset Glide"
+     "M3K-FR p.19: Mode Double entrée (Split), Mode Preset Glide",
+     "Hardware session 2026-10-20 (output/research/tc-m3000-hw, outside Git)"
     ]
    }
   },

@@ -19,7 +19,7 @@ META_CSP=1 npm run build
 npm run leak-gate -- --artifact dist
 ```
 
-There is no analytics SDK or application server, and this version sends no MIDI. Drafts are not uploaded. Downloads
+There is no analytics SDK or application server. MIDI messages go only to the ports you choose. Drafts are not uploaded. Downloads
 are explicit. Clearing site data removes browser-held drafts; export copies first. Deployment is performed by the
 pinned Pages workflow; only `dist` is uploaded as the site. A successful local build is not deployment proof: inspect
 the Actions run and the live site after pushing.
