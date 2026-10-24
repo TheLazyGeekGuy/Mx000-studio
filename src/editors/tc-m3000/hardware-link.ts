@@ -20,7 +20,7 @@ export interface HardwareLink {autoApply:boolean;setAutoApply(on:boolean):void;e
 
 export function useHardwareLink(context:EditorViewContext|undefined,session:M3000Session,locked:boolean,revision:number):HardwareLink{
  const snapshot=useSyncExternalStore(session.subscribe,session.getSnapshot,session.getSnapshot)
- const [autoApply,setAuto]=useState(()=>read(AUTO_KEY)!=='off'),[error,setError]=useState(''),[link,setLink]=useState(()=>context?.lease.getState())
+ const [autoApply,setAuto]=useState(()=>!context?.recovered&&read(AUTO_KEY)!=='off'),[error,setError]=useState(''),[link,setLink]=useState(()=>context?.lease.getState())
  const grant=useRef<{token:MidiAuthorization;query:MidiAuthorization;generation:number}|null>(null),identifying=useRef<number>(-1),identifiedOn=useRef<number>(-1),detecting=useRef(false),requested=useRef(false)
  const hw=snapshot.hardware
  useEffect(()=>context?.lease.onState(setLink),[context])
@@ -28,7 +28,7 @@ export function useHardwareLink(context:EditorViewContext|undefined,session:M300
  useEffect(()=>{if(link&&hw.identity&&identifiedOn.current!==-1&&identifiedOn.current!==link.generation){identifiedOn.current=-1;session.hardware.reset()}},[link?.generation,hw.identity,session])
  // Restore a remembered pair, or bind one unambiguous M-series candidate on first use.
  useEffect(()=>{
-  if(!context||link?.connected||locked)return
+  if(!context||context.recovered||link?.connected||locked)return
   const name=read(PORT_KEY)
   // MIDI access may arrive after the editor opens (permission prompt, ports appearing): retry every 1.5 s until bound.
   const attempt=()=>{
@@ -47,7 +47,7 @@ export function useHardwareLink(context:EditorViewContext|undefined,session:M300
   if(!context||!link?.connected||locked||hw.identity||hw.busy||detecting.current||identifying.current===link.generation)return
   identifying.current=link.generation
   const q=context.broker.authorize(context.id,'query')
-  session.hardware.identify(q).then(()=>{identifiedOn.current=link.generation;const b=context.lease.getState().binding,n=b&&context.access.inputs.get(b.inputId)?.name;if(n&&b&&n===context.access.outputs.get(b.outputId)?.name)write(PORT_KEY,n);return session.hardware.readCurrent(q)}).then(()=>setError('')).catch(e=>setError(e instanceof Error?e.message:String(e))).finally(()=>context.broker.revoke(q))
+  session.hardware.identify(q).then(()=>{identifiedOn.current=link.generation;const b=context.lease.getState().binding,n=b&&context.access.inputs.get(b.inputId)?.name;if(n&&b&&n===context.access.outputs.get(b.outputId)?.name)write(PORT_KEY,n);if(!context.recovered)return session.hardware.readCurrent(q)}).then(()=>setError('')).catch(e=>setError(e instanceof Error?e.message:String(e))).finally(()=>context.broker.revoke(q))
  },[context,link?.connected,link?.generation,locked,hw.identity,hw.busy,session])
  // Auto-apply: hold an edit-buffer grant while an identified M3000 is bound and the editor is unlocked.
  useEffect(()=>{
