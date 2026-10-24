@@ -9,8 +9,8 @@ import {algorithmById,type M3000State} from './model'
 import {m3000Map} from './parameter-map'
 import {formatValue} from './format'
 
-/** Port names never identify the model; they only order the candidates that receive an Identity Request. */
-export const portLooksLikeMSeries=(name:string|null|undefined)=>/\bM\s?[23x]000\b|\bM[23]K\b/i.test(name??'')
+import {portLooksLikeMSeries} from './device-ports'
+export {portLooksLikeMSeries} from './device-ports'
 const ROUTING=m3000Map.system.find(p=>p.name==='MIDI_ROUTING')!
 const routingLabel=(v:number|null)=>v===null?'—':formatValue({name:ROUTING.name,min:ROUTING.min,max:ROUTING.max,display:ROUTING.display},v)
 const algorithmName=(id:number)=>algorithmById(id)?.name??`algorithme ${id}`

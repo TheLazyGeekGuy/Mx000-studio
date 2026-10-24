@@ -8,6 +8,7 @@ import {useEffect,useRef,useState,useSyncExternalStore} from 'react'
 import type {EditorViewContext} from '../../editor-host/view-contract'
 import type {MidiAuthorization} from '../../editor-host/midi-broker'
 import type {M3000Session} from './module'
+import {automaticMSeriesPair} from './device-ports'
 
 const AUTO_KEY='midi-studio.tc-m3000.auto-apply',PORT_KEY='midi-studio.tc-m3000.port'
 const read=(key:string)=>{try{return localStorage.getItem(key)}catch{return null}}
@@ -25,14 +26,14 @@ export function useHardwareLink(context:EditorViewContext|undefined,session:M300
  useEffect(()=>context?.lease.onState(setLink),[context])
  // A new binding (other port, reconnection) invalidates the identity learned on the previous one.
  useEffect(()=>{if(link&&hw.identity&&identifiedOn.current!==-1&&identifiedOn.current!==link.generation){identifiedOn.current=-1;session.hardware.reset()}},[link?.generation,hw.identity,session])
- // Re-bind the remembered pair when MIDI access lists it and nothing is bound yet.
+ // Restore a remembered pair, or bind one unambiguous M-series candidate on first use.
  useEffect(()=>{
   if(!context||link?.connected||locked)return
-  const name=read(PORT_KEY);if(!name)return
+  const name=read(PORT_KEY)
   // MIDI access may arrive after the editor opens (permission prompt, ports appearing): retry every 1.5 s until bound.
   const attempt=()=>{
-   const input=[...context.access.inputs.values()].find(p=>p.name===name&&p.state!=='disconnected'),output=[...context.access.outputs.values()].find(p=>p.name===name&&p.state!=='disconnected')
-   if(input&&output&&context.broker.available('input',input.id,context.id)&&context.broker.available('output',output.id,context.id))try{context.lease.bind({inputId:input.id,outputId:output.id});return true}catch{/* busy elsewhere */}
+   const pair=automaticMSeriesPair([...context.access.inputs.values()],[...context.access.outputs.values()],(direction,id)=>context.broker.available(direction,id,context.id),name)
+   if(pair)try{context.lease.bind({inputId:pair.input.id,outputId:pair.output.id});return true}catch{/* busy elsewhere */}
    return false
   }
   if(attempt())return
@@ -46,7 +47,7 @@ export function useHardwareLink(context:EditorViewContext|undefined,session:M300
   if(!context||!link?.connected||locked||hw.identity||hw.busy||detecting.current||identifying.current===link.generation)return
   identifying.current=link.generation
   const q=context.broker.authorize(context.id,'query')
-  session.hardware.identify(q).then(()=>{identifiedOn.current=link.generation;return session.hardware.readCurrent(q)}).then(()=>setError('')).catch(e=>setError(e instanceof Error?e.message:String(e))).finally(()=>context.broker.revoke(q))
+  session.hardware.identify(q).then(()=>{identifiedOn.current=link.generation;const b=context.lease.getState().binding,n=b&&context.access.inputs.get(b.inputId)?.name;if(n&&b&&n===context.access.outputs.get(b.outputId)?.name)write(PORT_KEY,n);return session.hardware.readCurrent(q)}).then(()=>setError('')).catch(e=>setError(e instanceof Error?e.message:String(e))).finally(()=>context.broker.revoke(q))
  },[context,link?.connected,link?.generation,locked,hw.identity,hw.busy,session])
  // Auto-apply: hold an edit-buffer grant while an identified M3000 is bound and the editor is unlocked.
  useEffect(()=>{
